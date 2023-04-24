@@ -1,0 +1,72 @@
+body{
+    background-color: darkgray;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#BelsoText{
+    text-align: center;
+    padding-top: 21%;
+    font-size: xx-large;
+}
+#KivalasztDiv div{
+    border: 2px solid gray;
+    height: 212px;
+    width: 250px;
+    margin: 2%;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#BotokEllen{
+    background-color: rgba(128, 128, 128, 0.3);
+    transition: .7s;
+}
+#BotokEllen:hover{
+    background-color: rgba(0, 255, 0, 0.3);
+    border: 2px solid lime;
+    border-radius: 5px;
+    color: white !important;
+}
+#JatekosEllen{
+    background-color: rgba(128, 128, 128, 0.3);
+    transition: .7s;
+}
+#JatekosEllen:hover{
+    background-color: rgba(0, 255, 0, 0.3);
+    border: 2px solid lime;
+    border-radius: 5px;
+    color: white !important;
+}
+#Gomb{
+    background-color: rgb(95, 95, 95);
+    color: gray;
+    border: 2px solid gray;
+    transition: .7s;
+    display: block;
+    margin: auto;
+}
+#KivalasztottGomb{
+    background-color: rgb(95, 95, 95);
+    color: white;
+    border: 2px solid white;
+    transition: .7s;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+}
+#KivalasztottGomb:hover{
+    background-color: rgb(27, 27, 27);
+    border: 2px solid red !important;
+    color: red !important;
+    border-radius: 15px !important;
+}
+#Kivalasztva{
+    background-color: rgba(0, 255, 0, 0.3);
+    border: 2px solid lime !important;
+    border-radius: 5px !important;
+    color: white !important;
+}
+#NemValasztHato{
+    background-color: rgba(83, 83, 83, 0.5);
+    border: 2px solid black !important;
+    cursor: default !important;
+    color : darkgray !important;
+}
