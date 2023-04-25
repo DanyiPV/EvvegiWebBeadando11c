@@ -1,4 +1,7 @@
-var Indulhat = false;
+var Leteve = false;
+var CoinErtek = 0;
+var Lefutott = false;
+
 function AlapKiGen(){
     let Jatekter = document.createElement("div");
     Jatekter.id = "Jatekter";
@@ -28,18 +31,6 @@ function JatekosKivalaszt(){
     JatekosEllen.innerHTML = "<p id = BelsoText>Játékos Ellen</p>";
     JatekosEllen.setAttribute("onclick","RaKatt(this)");
     document.getElementById("KivalasztDiv").appendChild(JatekosEllen);
-    /*let GombDiv = document.createElement("div");
-    GombDiv.style.width = "100%";
-    GombDiv.id = "GombDiv";
-    document.body.appendChild(GombDiv);
-    let gomb = document.createElement("input");
-    gomb.type = "button";
-    gomb.value = "Indítás";
-    gomb.style.width = "180px";
-    gomb.style.height = "40px";
-    gomb.style.borderRadius = "10px";
-    gomb.id = "Gomb";
-    GombDiv.appendChild(gomb);*/
 }
 
 function ErtekKivalasztas(){
@@ -53,6 +44,7 @@ function ErtekKivalasztas(){
         div.classList = "BelsoDivek";
         div.dataset.ertek = ertekek[i];
         div.innerHTML = "<p>"+ertekek[i]+"</p>";
+        div.id = "BDiv"+i;
         div.setAttribute("onclick","ErtekKivalasztva(this)");
         ErtekDivTer.appendChild(div);
     }
@@ -60,11 +52,40 @@ function ErtekKivalasztas(){
 
 function ErtekKivalasztva(div){
     div.classList += " Kivalasztva";
+    CoinErtek = div.dataset.ertek;
+    for(let i = 0; i < document.getElementsByClassName("BelsoDivek").length;i++){
+        if("BDiv"+i != div.id){
+            document.getElementById("BDiv"+i).classList = "BelsoDivek";
+        }
+    }
+    if(Lefutott == false){
+        document.getElementById("Gomb").setAttribute("onclick","Inditas()");
+        document.getElementById("Gomb").id ="KivalasztottGomb";
+        Lefutott = true
+    }
+}
+function GombLeterhoz(){
+    let GombDiv = document.createElement("div");
+    GombDiv.style.width = "100%";
+    GombDiv.id = "GombDiv";
+    document.body.appendChild(GombDiv);
+    let gomb = document.createElement("input");
+    gomb.type = "button";
+    gomb.value = "Indítás";
+    gomb.style.width = "180px";
+    gomb.style.height = "40px";
+    gomb.style.borderRadius = "10px";
+    gomb.id = "Gomb";
+    GombDiv.appendChild(gomb);
 }
 
 function RaKatt(div){
     div.classList += " Kivalasztva";
-    ErtekKivalasztas();
+    if(Leteve == false){
+        ErtekKivalasztas();
+        GombLeterhoz();
+        Leteve = true;
+    }
     if(div.dataset.value == "Botok Ellen"){
         document.getElementById("JatekKiGenScript").src = "BotokEllen.js";
         let elemt = document.getElementById("JatekosEllen");
@@ -75,8 +96,6 @@ function RaKatt(div){
         let elemt = document.getElementById("BotokEllen");
         elemt.classList.remove("Kivalasztva");
     }
-    document.getElementById("Gomb").setAttribute("onclick","Inditas()");
-    document.getElementById("Gomb").id ="KivalasztottGomb";
     Indulhat = true;
 }
 
@@ -84,6 +103,7 @@ function Inditas(){
     if(Indulhat){
         document.body.removeChild(document.getElementById("Jatekter"));
         document.body.removeChild(document.getElementById("GombDiv"));
+        document.body.removeChild(document.getElementById("ErtekDivTer"));
         TablaKiGen();
     }
 }
