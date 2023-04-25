@@ -1,5 +1,4 @@
 var Indulhat = false;
-
 function AlapKiGen(){
     let Jatekter = document.createElement("div");
     Jatekter.id = "Jatekter";
