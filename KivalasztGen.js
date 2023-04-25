@@ -61,7 +61,6 @@ function Inditas(){
     if(Indulhat){
         document.body.removeChild(document.getElementById("Jatekter"));
         document.body.removeChild(document.getElementById("GombDiv"));
-        
         //TablaKiGen();
     }
 }
