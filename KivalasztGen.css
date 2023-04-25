@@ -1,39 +1,26 @@
 body{
-    background-color: darkgray;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(78, 78, 78);
+    font-family:Arial, Helvetica, sans-serif;
 }
 #BelsoText{
     text-align: center;
-    padding-top: 21%;
+    margin-top: 12.555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555%;
     font-size: xx-large;
 }
 #KivalasztDiv div{
-    border: 2px solid gray;
-    height: 212px;
+    height: 100px;
     width: 250px;
     margin: 2%;
     border-radius: 20px;
     cursor: pointer;
+    color: white;
 }
-#BotokEllen{
-    background-color: rgba(128, 128, 128, 0.3);
-    transition: .7s;
+.KivalasztotDesign{
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
 }
-#BotokEllen:hover{
-    background-color: rgba(0, 255, 0, 0.3);
-    border: 2px solid lime;
-    border-radius: 5px;
-    color: white !important;
-}
-#JatekosEllen{
-    background-color: rgba(128, 128, 128, 0.3);
-    transition: .7s;
-}
-#JatekosEllen:hover{
-    background-color: rgba(0, 255, 0, 0.3);
-    border: 2px solid lime;
-    border-radius: 5px;
-    color: white !important;
+.KivalasztotDesign:hover{
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
 }
 #Gomb{
     background-color: rgb(95, 95, 95);
@@ -59,14 +46,47 @@ body{
     border-radius: 15px !important;
 }
 .Kivalasztva{
-    background-color: rgba(0, 255, 0, 0.3) !important;
-    border: 2px solid lime !important;
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255) !important;
     border-radius: 5px !important;
-    color: white !important;
+    background-color: rgb(65, 65, 65);
 }
 #NemValasztHato{
     background-color: rgba(83, 83, 83, 0.5);
     border: 2px solid black !important;
     cursor: default !important;
     color : darkgray !important;
+}
+#ErtekDivTer{
+    height: auto;
+    width: fit-content;
+    margin:  auto;
+    text-align: center;
+}
+#ErtekDivTer>p{
+    font-size: xx-large;
+    color: white;
+    text-decoration: underline;
+    cursor: default;
+}
+
+.BelsoDivek{
+    height: 50px;
+    width: 450px;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    margin: 10px auto;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
+    margin: 20px;
+}
+.BelsoDivek:hover{
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
+}
+
+.BelsoDivek p{
+    font-size: x-large;
+    padding-top: 2.55555555555555555555555%;
+    margin: auto;
 }

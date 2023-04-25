@@ -1,11 +1,12 @@
 var Indulhat = false;
+
 function AlapKiGen(){
     let Jatekter = document.createElement("div");
     Jatekter.id = "Jatekter";
     document.body.appendChild(Jatekter);
 }
 
-function JatekosKivalast(){
+function JatekosKivalaszt(){
     let KivalasztDiv = document.createElement("div");
     KivalasztDiv.id = "KivalasztDiv";
     KivalasztDiv.style.height = "auto";
@@ -18,15 +19,17 @@ function JatekosKivalast(){
     BotokEllen.id = "BotokEllen";
     BotokEllen.innerHTML = "<p id = BelsoText>Botok Ellen</p>";
     BotokEllen.dataset.value = "Botok Ellen";
+    BotokEllen.classList = "KivalasztotDesign";
     BotokEllen.setAttribute("onclick","RaKatt(this)");
     document.getElementById("KivalasztDiv").appendChild(BotokEllen);
     let JatekosEllen = document.createElement("div");
     JatekosEllen.id = "JatekosEllen";
     JatekosEllen.dataset.value = "Játékos Ellen";
+    JatekosEllen.classList = "KivalasztotDesign";
     JatekosEllen.innerHTML = "<p id = BelsoText>Játékos Ellen</p>";
     JatekosEllen.setAttribute("onclick","RaKatt(this)");
     document.getElementById("KivalasztDiv").appendChild(JatekosEllen);
-    let GombDiv = document.createElement("div");
+    /*let GombDiv = document.createElement("div");
     GombDiv.style.width = "100%";
     GombDiv.id = "GombDiv";
     document.body.appendChild(GombDiv);
@@ -37,11 +40,32 @@ function JatekosKivalast(){
     gomb.style.height = "40px";
     gomb.style.borderRadius = "10px";
     gomb.id = "Gomb";
-    GombDiv.appendChild(gomb);
+    GombDiv.appendChild(gomb);*/
+}
+
+function ErtekKivalasztas(){
+    let ErtekDivTer = document.createElement("div");
+    ErtekDivTer.id = "ErtekDivTer";
+    ErtekDivTer.innerHTML = "<p>Válassz kezdő értéket!</p>"
+    document.body.appendChild(ErtekDivTer);
+    ertekek = [50,100,250,500,1000,2500,5000];
+    for(let i = 0; i < 7;i++){
+        let div = document.createElement("div");
+        div.classList = "BelsoDivek";
+        div.dataset.ertek = ertekek[i];
+        div.innerHTML = "<p>"+ertekek[i]+"</p>";
+        div.setAttribute("onclick","ErtekKivalasztva(this)");
+        ErtekDivTer.appendChild(div);
+    }
+}
+
+function ErtekKivalasztva(div){
+    div.classList += " Kivalasztva";
 }
 
 function RaKatt(div){
-    div.classList = "Kivalasztva";
+    div.classList += " Kivalasztva";
+    ErtekKivalasztas();
     if(div.dataset.value == "Botok Ellen"){
         document.getElementById("JatekKiGenScript").src = "BotokEllen.js";
         let elemt = document.getElementById("JatekosEllen");
@@ -61,12 +85,16 @@ function Inditas(){
     if(Indulhat){
         document.body.removeChild(document.getElementById("Jatekter"));
         document.body.removeChild(document.getElementById("GombDiv"));
-        //TablaKiGen();
+        TablaKiGen();
     }
+}
+
+function TablaKiGen(){
+
 }
 
 function Main(){
     AlapKiGen();
-    JatekosKivalast();
+    JatekosKivalaszt();
 }
 Main();
