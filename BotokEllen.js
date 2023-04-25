@@ -21,7 +21,7 @@ var kartyaAdatok = [
     {id:20,value:8,sign:''},
     {id:21,value:9,sign:''},
     {id:22,value:2,sign:''},
-    {id:23,value:9,sign:'hegy'}
+    {id:23,value:9,sign:'hegy'},
     {id:24,value:9,sign:''},
     {id:25,value:9,sign:''},
     {id:26,value:10,sign:''},
