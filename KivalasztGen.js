@@ -1,12 +1,29 @@
+//Globál változók
 var Leteve = false;
 var CoinErtek = 0;
 var Lefutott = false;
+//Játéktér
+let Jatekter = document.createElement("div");
+Jatekter.id = "Jatekter";
+document.body.appendChild(Jatekter);
 
-function AlapKiGen(){
-    let Jatekter = document.createElement("div");
-    Jatekter.id = "Jatekter";
-    document.body.appendChild(Jatekter);
+function AlapBeallaitasok(){
+    let AlapDiv = document.createElement("div");
+    AlapDiv.id = "AlapDiv";
+    AlapDiv.classList = "AlapDiv";
+    document.getElementById("Jatekter").appendChild(AlapDiv);
+    let FeketeHatterDiv = document.createElement("div");
+    FeketeHatterDiv.id = "FeketeHatterDiv";
+    FeketeHatterDiv.classList = "FeketeHatter";
+    document.body.appendChild(FeketeHatterDiv);
+    setTimeout(RaadLenyilas,1200);
+    JatekosKivalaszt();
 }
+
+function RaadLenyilas(){
+    document.getElementById("AlapDiv").classList += " Lenyilas";
+}
+
 
 function JatekosKivalaszt(){
     let KivalasztDiv = document.createElement("div");
@@ -16,7 +33,7 @@ function JatekosKivalaszt(){
     KivalasztDiv.style.margin = "auto";
     KivalasztDiv.style.display = "flex";
     KivalasztDiv.style.borderRadius = "10px";
-    document.getElementById("Jatekter").appendChild(KivalasztDiv);
+    document.getElementById("AlapDiv").appendChild(KivalasztDiv);
     let BotokEllen = document.createElement("div");
     BotokEllen.id = "BotokEllen";
     BotokEllen.innerHTML = "<p id = BelsoText>Botok Ellen</p>";
@@ -37,13 +54,13 @@ function ErtekKivalasztas(){
     let ErtekDivTer = document.createElement("div");
     ErtekDivTer.id = "ErtekDivTer";
     ErtekDivTer.innerHTML = "<p>Válassz kezdő értéket!</p>"
-    document.body.appendChild(ErtekDivTer);
+    document.getElementById("AlapDiv").appendChild(ErtekDivTer);
     ertekek = [50,100,250,500,1000,2500,5000];
     for(let i = 0; i < 7;i++){
         let div = document.createElement("div");
         div.classList = "BelsoDivek";
         div.dataset.ertek = ertekek[i];
-        div.innerHTML = "<p>"+ertekek[i]+"</p>";
+        div.innerHTML = "<p>$"+ertekek[i]+"</p>";
         div.id = "BDiv"+i;
         div.setAttribute("onclick","ErtekKivalasztva(this)");
         ErtekDivTer.appendChild(div);
@@ -59,7 +76,7 @@ function ErtekKivalasztva(div){
         }
     }
     if(Lefutott == false){
-        document.getElementById("Gomb").setAttribute("onclick","Inditas()");
+        document.getElementById("Gomb").setAttribute("onclick","KivalasztasVege()");
         document.getElementById("Gomb").id ="KivalasztottGomb";
         Lefutott = true
     }
@@ -68,7 +85,7 @@ function GombLeterhoz(){
     let GombDiv = document.createElement("div");
     GombDiv.style.width = "100%";
     GombDiv.id = "GombDiv";
-    document.body.appendChild(GombDiv);
+    document.getElementById("AlapDiv").appendChild(GombDiv);
     let gomb = document.createElement("input");
     gomb.type = "button";
     gomb.value = "Indítás";
@@ -99,13 +116,19 @@ function RaKatt(div){
     Indulhat = true;
 }
 
-function Inditas(){
-    if(Indulhat){
-        document.body.removeChild(document.getElementById("Jatekter"));
-        document.body.removeChild(document.getElementById("GombDiv"));
-        document.body.removeChild(document.getElementById("ErtekDivTer"));
-        TablaKiGen();
+function KivalasztasVege(){
+    document.getElementById("BotokEllen").classList = "KivalasztotDesign";
+    document.getElementById("JatekosEllen").classList = "KivalasztotDesign";
+    for(let i = 0; i < document.getElementsByClassName("BelsoDivek").length;i++){
+        document.getElementById("BDiv"+i).classList = "BelsoDivek";
     }
+    document.getElementById("AlapDiv").classList = "AlapDiv";
+    setTimeout(Felallitas,2000);
+}
+
+function Felallitas(){
+    document.body.removeChild(document.getElementById("FeketeHatterDiv"));
+    document.getElementById("ChipTablaNev").setAttribute("onmouseover","FelNyilik(this)");
 }
 
 function TablaKiGen(){
@@ -115,12 +138,11 @@ function TablaKiGen(){
 function ChipsTabla(){
     let Tabla = document.createElement("div");
     Tabla.id = "ChipTabla";
-    document.body.appendChild(Tabla);
+    document.getElementById("Jatekter").appendChild(Tabla);
     let TablaNev = document.createElement("div");
     TablaNev.id = "ChipTablaNev";
     TablaNev.innerHTML = "<p>Chips</p>";
-    TablaNev.setAttribute("onmouseover","FelNyilik(this)");
-    document.body.appendChild(TablaNev);
+    document.getElementById("Jatekter").appendChild(TablaNev);
 }
 
 function FelNyilik(div){
@@ -129,7 +151,7 @@ function FelNyilik(div){
 }
 
 function Main(){
-    AlapKiGen();
-    JatekosKivalaszt();
+    TablaKiGen();
+    AlapBeallaitasok();
 }
 Main();

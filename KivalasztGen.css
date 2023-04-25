@@ -5,16 +5,45 @@ body{
     background-attachment: fixed;
     background-size: cover; */
     font-family:Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    transition: .6s;
 }
+.AlapDiv{
+    position: absolute;
+    height: 660px;
+    width: 450px;
+    border-radius: 20px;
+    top: -50%;
+    left: 50%;
+    transition: 1.5s;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    border: 1px solid white;
+    box-shadow: 0 0 5px 0.5px white inset, 0 0 5px 0.5px white;
+}
+.FeketeHatter{
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+    z-index: 1;
+}
+.Lenyilas{
+    top: 50% !important;
+    left: 50% !important;
+}
+
 #BelsoText{
     text-align: center;
-    margin-top: 12.555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555%;
-    font-size: xx-large;
+    margin-top: 17.555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555%;
+    font-size: x-large;
 }
 #KivalasztDiv div{
     height: 100px;
-    width: 250px;
-    margin: 2%;
+    width: 220px;
+    margin: 5% 2% 2% 2%;
     border-radius: 20px;
     cursor: pointer;
     color: white;
@@ -70,15 +99,17 @@ body{
     text-align: center;
 }
 #ErtekDivTer>p{
-    font-size: xx-large;
+    font-size: x-large;
     color: white;
     text-decoration: underline;
+    margin-top: 3px;
     cursor: default;
 }
 
 .BelsoDivek{
-    height: 50px;
-    width: 450px;
+    margin-top: 3px;
+    height: 40px;
+    width: 350px;
     color: white;
     text-align: center;
     border-radius: 15px;
