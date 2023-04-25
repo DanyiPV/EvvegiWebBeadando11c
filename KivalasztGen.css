@@ -1,5 +1,9 @@
 body{
-    background-color: rgb(78, 78, 78);
+    background-color: rgb(95, 95, 95);
+    /* background-image: url(hatter.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; */
     font-family:Arial, Helvetica, sans-serif;
     overflow: hidden;
     transition: .6s;
