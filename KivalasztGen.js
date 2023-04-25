@@ -109,7 +109,23 @@ function Inditas(){
 }
 
 function TablaKiGen(){
+    ChipsTabla();
+}
 
+function ChipsTabla(){
+    let Tabla = document.createElement("div");
+    Tabla.id = "ChipTabla";
+    document.body.appendChild(Tabla);
+    let TablaNev = document.createElement("div");
+    TablaNev.id = "ChipTablaNev";
+    TablaNev.innerHTML = "<p>Chips</p>";
+    TablaNev.setAttribute("onmouseover","FelNyilik(this)");
+    document.body.appendChild(TablaNev);
+}
+
+function FelNyilik(div){
+    div.classList = "NevFelnyilas";
+    document.getElementById("ChipTabla").classList = "TablaFelnyilas";
 }
 
 function Main(){

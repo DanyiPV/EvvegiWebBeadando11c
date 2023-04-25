@@ -30,12 +30,12 @@ body{
     margin: auto;
     border-radius: 15px;
     font-size: larger;
+    transition: .7s;
 }
 #KivalasztottGomb{
     transition: all .4s ease-in-out;
     box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
     color: white;
-    transition: .7s;
     display: block;
     margin: auto;
     border: 0;
@@ -92,4 +92,42 @@ body{
     font-size: x-large;
     padding-top: 2.55555555555555555555555%;
     margin: auto;
+}
+
+#ChipTabla{
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    border: 1px solid white;
+    border-top-right-radius: 20px;
+    bottom: -252px;
+    left: 0;
+    background-color: green;
+    transition: 1.5s;
+}
+#ChipTablaNev{
+    position: absolute;
+    background-color: green;
+    width: 130px;
+    height: 55px;
+    border: 1px solid white;
+    border-bottom: 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    bottom: -2px;
+    left: 0;
+    text-align: center;
+    color: white;
+    font-size: x-large;
+    transition: 1.5s;
+}
+#ChipTablaNev p{
+    margin: 15px auto;
+    cursor: default;
+}
+.NevFelnyilas{
+    bottom: 250px !important;
+}
+.TablaFelnyilas{
+    bottom: 0 !important;
 }
