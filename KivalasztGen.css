@@ -58,13 +58,13 @@ body{
     color: red !important;
     border-radius: 15px !important;
 }
-#Kivalasztva{
-    background-color: rgba(0, 255, 0, 0.3);
+.Kivalasztva{
+    background-color: rgba(0, 255, 0, 0.3) !important;
     border: 2px solid lime !important;
     border-radius: 5px !important;
     color: white !important;
 }
-#NemValasztHato{
+#NemValasztHato{    
     background-color: rgba(83, 83, 83, 0.5);
     border: 2px solid black !important;
     cursor: default !important;
