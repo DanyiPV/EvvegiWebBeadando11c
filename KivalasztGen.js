@@ -46,28 +46,23 @@ function RaKatt(div){
         document.getElementById("JatekKiGenScript").src = "BotokEllen.js";
         let elemt = document.getElementById("JatekosEllen");
         elemt.classList.remove("Kivalasztva");
-        Indulhat = true;
     }
     else if(div.dataset.value == "Játékos Ellen"){
         document.getElementById("JatekKiGenScript").src = "JatekosEllen.js";
         let elemt = document.getElementById("BotokEllen");
         elemt.classList.remove("Kivalasztva");
-        Indulhat = true;
     }
     document.getElementById("Gomb").setAttribute("onclick","Inditas()");
     document.getElementById("Gomb").id ="KivalasztottGomb";
+    Indulhat = true;
 }
 
 function Inditas(){
     if(Indulhat){
         document.body.removeChild(document.getElementById("Jatekter"));
         document.body.removeChild(document.getElementById("GombDiv"));
-        TablaKiGen();
+        //TablaKiGen();
     }
-}
-
-function TablaKiGen(){
-    //Tábla Kigenerálás
 }
 
 function Main(){
