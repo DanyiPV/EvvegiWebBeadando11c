@@ -5,7 +5,7 @@ function AlapKiGen(){
     document.body.appendChild(Jatekter);
 }
 
-function JatekosKivalast(){
+function JatekosKivalaszt(){
     let KivalasztDiv = document.createElement("div");
     KivalasztDiv.id = "KivalasztDiv";
     KivalasztDiv.style.height = "auto";
@@ -61,12 +61,13 @@ function Inditas(){
     if(Indulhat){
         document.body.removeChild(document.getElementById("Jatekter"));
         document.body.removeChild(document.getElementById("GombDiv"));
+        
         //TablaKiGen();
     }
 }
 
 function Main(){
     AlapKiGen();
-    JatekosKivalast();
+    JatekosKivalaszt();
 }
 Main();
