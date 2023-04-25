@@ -58,8 +58,8 @@ body{
     color: red !important;
     border-radius: 15px !important;
 }
-#Kivalasztva{
-    background-color: rgba(0, 255, 0, 0.3);
+.Kivalasztva{
+    background-color: rgba(0, 255, 0, 0.3) !important;
     border: 2px solid lime !important;
     border-radius: 5px !important;
     color: white !important;
