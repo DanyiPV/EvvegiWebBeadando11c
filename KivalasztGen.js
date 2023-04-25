@@ -41,30 +41,27 @@ function JatekosKivalast(){
 }
 
 function RaKatt(div){
+    div.classList = "Kivalasztva";
     if(div.dataset.value == "Botok Ellen"){
         document.getElementById("JatekKiGenScript").src = "BotokEllen.js";
-        div.id = "Kivalasztva";
-        document.getElementById("Gomb").setAttribute("onclick","Inditas()");
-        document.getElementById("Gomb").id ="KivalasztottGomb"
-        document.getElementById("JatekosEllen").removeAttribute("onclick");
-        document.getElementById("JatekosEllen").id = "NemValasztHato";
-        Indulhat = true;
+        let elemt = document.getElementById("JatekosEllen");
+        elemt.classList.remove("Kivalasztva");
     }
     else if(div.dataset.value == "Játékos Ellen"){
         document.getElementById("JatekKiGenScript").src = "JatekosEllen.js";
-        div.id = "Kivalasztva";
-        document.getElementById("Gomb").setAttribute("onclick","Inditas()");
-        document.getElementById("Gomb").id ="KivalasztottGomb"
-        document.getElementById("BotokEllen").removeAttribute("onclick");
-        document.getElementById("BotokEllen").id = "NemValasztHato";
-        Indulhat = true;
+        let elemt = document.getElementById("BotokEllen");
+        elemt.classList.remove("Kivalasztva");
     }
+    document.getElementById("Gomb").setAttribute("onclick","Inditas()");
+    document.getElementById("Gomb").id ="KivalasztottGomb";
+    Indulhat = true;
 }
 
 function Inditas(){
     if(Indulhat){
         document.body.removeChild(document.getElementById("Jatekter"));
         document.body.removeChild(document.getElementById("GombDiv"));
+        //TablaKiGen();
     }
 }
 
