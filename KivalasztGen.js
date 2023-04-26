@@ -3,6 +3,8 @@ var Leteve = false;
 var CoinErtek = 0;
 var Lefutott = false;
 var BotokEllen = undefined;
+var TeljesCoinErtek = 0;
+
 //Játéktér
 let Jatekter = document.createElement("div");
 Jatekter.id = "Jatekter";
@@ -71,6 +73,7 @@ function ErtekKivalasztas(){
 function ErtekKivalasztva(div){
     div.classList += " Kivalasztva";
     CoinErtek = div.dataset.ertek;
+    TeljesCoinErtek = div.dataset.ertek;
     for(let i = 0; i < document.getElementsByClassName("BelsoDivek").length;i++){
         if("BDiv"+i != div.id){
             document.getElementById("BDiv"+i).classList = "BelsoDivek";
@@ -129,6 +132,9 @@ function KivalasztasVege(){
 function Felallitas(){
     document.body.removeChild(document.getElementById("FeketeHatterDiv"));
     document.getElementById("ChipTablaNev").setAttribute("onmouseover","FelAll()");
+    if(BotokEllen){
+        setTimeout(BotokErtekKiGen,400);
+    }
     ErtekBedobas();
 }
 
@@ -156,12 +162,8 @@ function ErtekMegjelenites(){
         let img = document.createElement("img");
         img.src = "chips/chip"+chipek[i]+".png";
         if(chipek[i]<=CoinErtek){
-            if(!BotokEllen && i==0){
-                img.classList = "Chipkepinaktiv";
-            }else{
-                img.classList = "Chipkepaktiv";
-                img.setAttribute("onclick","ErtekKatt("+chipek[i]+")")
-            }
+            img.classList = "Chipkepaktiv";
+            img.setAttribute("onclick","ErtekKatt("+chipek[i]+")")
         }else{
             img.classList = "Chipkepinaktiv";
         }
@@ -178,6 +180,8 @@ function ErtekMegjelenites(){
 }
 
 function ErtekKatt(ertek){
+    //console.log(Number(document.getElementById("CoinErtek11").dataset.value))+(ertek/5);
+    InditoGombKiGen();
     if(BotokEllen){ 
         let div = document.getElementById("CoinErtek51");
         div.dataset.value = Number(div.dataset.value)+ertek;
@@ -185,19 +189,74 @@ function ErtekKatt(ertek){
     }else{
         for(let i = 1;i<6;i++){
             let div = document.getElementById("CoinErtek"+((i*10)+1));
-            div.dataset.value = Number(div.dataset.value)+(ertek/5);
+            let Ertek = String(Number(div.dataset.value)+(ertek/5));
+            var VegesSzam = "";
+            if(VaneBennePont(Ertek)){
+                VegesSzam = Ertek[0];
+                let index = 1;
+                while(index < Ertek.length && Ertek[index] != '.'){
+                    VegesSzam += Ertek[index++];
+                }
+                VegesSzam += '.';
+                VegesSzam += Ertek[index+1];
+            }
+            else{
+                VegesSzam = Number(div.dataset.value)+(ertek/5);
+            }
+            div.dataset.value = Number(VegesSzam);
             div.innerHTML = "<p>$"+div.dataset.value+"</p>";
         }
     }
-
     CoinErtek -= ertek;
     ErtekFrissites();
+}
+
+function VaneBennePont(Ertek){
+    let i = 0;
+    while(i < Ertek.length && Ertek[i] != '.'){i++}
+    if(i < Ertek.length){return true}
+    else{return false}
 }
 
 function ErtekFrissites(){
     let Tabla = document.getElementById("ChipTabla");
     Tabla.innerHTML = "";
     ErtekMegjelenites();
+}
+
+function InditoGombKiGen(){
+    if(document.getElementById("InditoGomb") == undefined){
+        let InditoGomb = document.createElement("input");
+        InditoGomb.value = "Indítás";
+        InditoGomb.type = "button";
+        InditoGomb.id = "InditoGomb";
+        InditoGomb.classList = "InditoGomb";
+        InditoGomb.setAttribute("onclick","general()");
+        Jatekter.appendChild(InditoGomb);
+    }
+}
+function BotokErtekKiGen(){
+    console.log("Belép");
+    //[50,100,250,500,1000,2500,5000];
+    let BotokErtek = [{type: "könnyű", value: 50},{type: "könnyű", value: 100},{type: "normál", value: 250},{type: "normál", value: 500},
+    {type: "nehéz", value: 1000},{type: "nehéz", value: 2500},{type: "insane", value: 5000}];
+    let Botok = ["CoinErtek11","CoinErtek21","CoinErtek31","CoinErtek41"];
+    for(let i = 0; i < Botok.length;i++){
+        let szazalekolas = Math.floor(Math.random()*100+1);
+        let random = 0;
+        if(szazalekolas < 71){
+            random = Math.floor(Math.random()*4);
+        }
+        else if(szazalekolas > 70 && szazalekolas < 96){
+            random = Math.floor(Math.random()*2)+4;
+        }
+        else{
+            random = 6;
+        }
+        document.getElementById(Botok[i]).dataset.value = BotokErtek[random].value;
+        document.getElementById(Botok[i]).dataset.difficulty = BotokErtek[random].type;
+        document.getElementById(Botok[i]).innerHTML = "<p>$"+document.getElementById(Botok[i]).dataset.value+"</p>";
+    }
 }
 
 function TablaKiGen(){
