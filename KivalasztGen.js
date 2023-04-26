@@ -24,7 +24,6 @@ function RaadLenyilas(){
     document.getElementById("AlapDiv").classList += " Lenyilas";
 }
 
-
 function JatekosKivalaszt(){
     let KivalasztDiv = document.createElement("div");
     KivalasztDiv.id = "KivalasztDiv";
@@ -44,6 +43,7 @@ function JatekosKivalaszt(){
     let JatekosEllen = document.createElement("div");
     JatekosEllen.id = "JatekosEllen";
     JatekosEllen.dataset.value = "Játékos Ellen";
+    JatekosEllen.style.marginLeft = "2vw"
     JatekosEllen.classList = "KivalasztotDesign";
     JatekosEllen.innerHTML = "<p id = BelsoText>Játékos Ellen</p>";
     JatekosEllen.setAttribute("onclick","RaKatt(this)");
@@ -89,9 +89,6 @@ function GombLeterhoz(){
     let gomb = document.createElement("input");
     gomb.type = "button";
     gomb.value = "Indítás";
-    gomb.style.width = "180px";
-    gomb.style.height = "40px";
-    gomb.style.borderRadius = "10px";
     gomb.id = "Gomb";
     GombDiv.appendChild(gomb);
 }
@@ -128,11 +125,65 @@ function KivalasztasVege(){
 
 function Felallitas(){
     document.body.removeChild(document.getElementById("FeketeHatterDiv"));
-    document.getElementById("ChipTablaNev").setAttribute("onmouseover","FelNyilik(this)");
+    document.getElementById("ChipTablaNev").setAttribute("onmouseover","FelAll(this)");
 }
 
 function TablaKiGen(){
     ChipsTabla();
+    LapokTablaGen();
+}
+
+function LapokTablaGen(){
+    //Játékos/Botok kártyabox kigenerálása
+    let OsszLapokDiv = document.createElement("div");
+    OsszLapokDiv.id = "OsszLapokDiv";
+    Jatekter.appendChild(OsszLapokDiv);
+    let DivDarab = [2,2,1];
+    let OtosIndex = 1;
+    for(let k = 0; k < 3;k++){
+        let SorDiv = document.createElement("div");
+        SorDiv.classList = "SorDiv";
+        SorDiv.id = "SorDiv"+k;
+        for(let i = 0; i < DivDarab[k];i++){
+            let div = document.createElement("div");
+            div.classList = "OsszLapokBelsoDiv";
+            div.id = "BSorDiv"+k;
+            let div2 = document.createElement("div");
+            div2.classList = "StatusIndikatorBal";
+            div.appendChild(div2);
+            for(let j = 0; j < 3;j++){
+                let div2 = document.createElement("div");
+                div2.classList = "OLBDivs";
+                div2.id = "OLBDiv"+OtosIndex+j;
+                div.appendChild(div2);
+            }
+            div2 = document.createElement("div");
+            div2.classList = "OLBDivErtek";
+            div2.id = "OLBDivErtek"+OtosIndex;
+            div.appendChild(div2);
+            SorDiv.appendChild(div);
+            OtosIndex++;
+        }
+        OsszLapokDiv.appendChild(SorDiv);
+    }
+    OsztoTablaGen();
+}
+
+function OsztoTablaGen(){
+    let div = document.createElement("div");
+    div.classList = "OsszLapokBelsoDiv";
+    div.id = "OsztoDiv";
+    for(let j = 0; j < 3;j++){
+        let div2 = document.createElement("div");
+        div2.classList = "OLBDivs";
+        div2.id = "OLBDivOszto";
+        div.appendChild(div2);
+    }
+    let div2 = document.createElement("div");
+    div2.classList = "OLBDivErtek";
+    div2.id = "OLBDivErtek";
+    div.appendChild(div2);
+    Jatekter.appendChild(div);
 }
 
 function ChipsTabla(){
@@ -141,13 +192,14 @@ function ChipsTabla(){
     document.getElementById("Jatekter").appendChild(Tabla);
     let TablaNev = document.createElement("div");
     TablaNev.id = "ChipTablaNev";
-    TablaNev.innerHTML = "<p>Chips</p>";
+    TablaNev.innerHTML = "<p>Zetons</p>";
     document.getElementById("Jatekter").appendChild(TablaNev);
 }
 
-function FelNyilik(div){
+function FelAll(div){
     div.classList = "NevFelnyilas";
     document.getElementById("ChipTabla").classList = "TablaFelnyilas";
+    //document.getElementById("OsszLapokDiv").classList = "TablaOldalraTolas";
 }
 
 function Main(){
