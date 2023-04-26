@@ -76,16 +76,31 @@ body{
     width: 5vw;
     height: 2.5vw;
     border-radius: 10px;
-    margin-top: 3.2vw;
     margin-left: 1vw;
 }
-
+.CoinErtek{
+    border: 2px solid rgb(0, 102, 255);
+    width: 5vw;
+    height: 2.5vw;
+    border-radius: 10px;
+    margin-left: 1vw;
+}
 #OsztoDiv{
     height: 30%;
     border-radius: 15px;
     transition: 1.5s;
     margin: auto;
     margin-top: 1.2vw;
+}
+#OsztoDivErtek{
+    margin-top: 3vw;
+}
+.KozosErtekDiv{
+    background-color: unset !important;
+}
+
+.KozosErtekDiv div{
+    margin-top: 1.3vw;
 }
 
 .FeketeHatter{
@@ -239,4 +254,15 @@ body{
 }
 .TablaFelnyilas{
     bottom: 0vw !important;
+}
+#KiirDiv{
+    color: white;
+    text-decoration: underline rgba(255, 0, 0, 0.65);
+    font-size: 4vw;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transition: 1.5s;
+    transform: translate(-50%, -50%);
+    justify-content: space-around;
 }

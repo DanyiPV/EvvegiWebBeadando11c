@@ -55,7 +55,7 @@ function ErtekKivalasztas(){
     ErtekDivTer.id = "ErtekDivTer";
     ErtekDivTer.innerHTML = "<p>Válassz kezdő értéket!</p>"
     document.getElementById("AlapDiv").appendChild(ErtekDivTer);
-    ertekek = [50,100,250,500,1000,2500,5000];
+    let ertekek = [50,100,250,500,1000,2500,5000];
     for(let i = 0; i < 7;i++){
         let div = document.createElement("div");
         div.classList = "BelsoDivek";
@@ -125,7 +125,16 @@ function KivalasztasVege(){
 
 function Felallitas(){
     document.body.removeChild(document.getElementById("FeketeHatterDiv"));
-    document.getElementById("ChipTablaNev").setAttribute("onmouseover","FelAll(this)");
+    document.getElementById("ChipTablaNev").setAttribute("onmouseover","FelAll()");
+    ErtekBedobas();
+}
+
+function ErtekBedobas(){
+    setTimeout(FelAll,1500);
+    let KiirDiv = document.createElement("div");
+    KiirDiv.id = "KiirDiv";
+    KiirDiv.innerHTML = "<p>Dobjon be tétet!</p>";
+    Jatekter.appendChild(KiirDiv);
 }
 
 function TablaKiGen(){
@@ -140,6 +149,7 @@ function LapokTablaGen(){
     Jatekter.appendChild(OsszLapokDiv);
     let DivDarab = [2,2,1];
     let OtosIndex = 1;
+    let IDNevek = ["OLBDivErtek","CoinErtek"];
     for(let k = 0; k < 3;k++){
         let SorDiv = document.createElement("div");
         SorDiv.classList = "SorDiv";
@@ -157,10 +167,15 @@ function LapokTablaGen(){
                 div2.id = "OLBDiv"+OtosIndex+j;
                 div.appendChild(div2);
             }
-            div2 = document.createElement("div");
-            div2.classList = "OLBDivErtek";
-            div2.id = "OLBDivErtek"+OtosIndex;
-            div.appendChild(div2);
+            let KozosErtekDiv = document.createElement("div");
+            KozosErtekDiv.classList = "KozosErtekDiv";
+            for(let j = 0; j < 2;j++){
+                div2 = document.createElement("div");
+                div2.classList = IDNevek[j];
+                div2.id = IDNevek[j]+OtosIndex+j;
+                KozosErtekDiv.appendChild(div2);
+            }
+            div.appendChild(KozosErtekDiv)
             SorDiv.appendChild(div);
             OtosIndex++;
         }
@@ -195,16 +210,17 @@ function ChipsTabla(){
     TablaNev.id = "ChipTablaNev";
     TablaNev.innerHTML = "<p>Zetons</p>";
     document.getElementById("Jatekter").appendChild(TablaNev);
+
 }
 
-function FelAll(div){
-    div.classList = "NevFelnyilas";
+function FelAll(){
+    document.getElementById("ChipTablaNev").classList = "NevFelnyilas";
     document.getElementById("ChipTabla").classList = "TablaFelnyilas";
     //document.getElementById("OsszLapokDiv").classList = "TablaOldalraTolas";
 }
 
 function Main(){
     TablaKiGen();
-    //AlapBeallaitasok();
+    AlapBeallaitasok();
 }
 Main();
