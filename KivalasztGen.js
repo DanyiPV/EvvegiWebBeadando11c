@@ -170,18 +170,19 @@ function LapokTablaGen(){
 }
 
 function OsztoTablaGen(){
+    let index = 0;
     let div = document.createElement("div");
     div.classList = "OsszLapokBelsoDiv";
     div.id = "OsztoDiv";
     for(let j = 0; j < 3;j++){
         let div2 = document.createElement("div");
         div2.classList = "OLBDivs";
-        div2.id = "OLBDivOszto";
+        div2.id = "OLBDivOszto"+(index++);
         div.appendChild(div2);
     }
     let div2 = document.createElement("div");
     div2.classList = "OLBDivErtek";
-    div2.id = "OLBDivErtek";
+    div2.id = "OsztoDivErtek";
     div.appendChild(div2);
     Jatekter.appendChild(div);
 }
@@ -204,6 +205,6 @@ function FelAll(div){
 
 function Main(){
     TablaKiGen();
-    AlapBeallaitasok();
+    //AlapBeallaitasok();
 }
 Main();
