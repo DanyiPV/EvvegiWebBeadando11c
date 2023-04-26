@@ -199,11 +199,11 @@ function ChipsTabla(){
 function FelAll(div){
     div.classList = "NevFelnyilas";
     document.getElementById("ChipTabla").classList = "TablaFelnyilas";
-    document.getElementById("OsszLapokDiv").classList = "TablaOldalraTolas";
+    //document.getElementById("OsszLapokDiv").classList = "TablaOldalraTolas";
 }
 
 function Main(){
     TablaKiGen();
-    //AlapBeallaitasok();
+    AlapBeallaitasok();
 }
 Main();
