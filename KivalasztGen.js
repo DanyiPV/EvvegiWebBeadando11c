@@ -134,25 +134,56 @@ function TablaKiGen(){
 }
 
 function LapokTablaGen(){
+    //Játékos/Botok kártyabox kigenerálása
     let OsszLapokDiv = document.createElement("div");
     OsszLapokDiv.id = "OsszLapokDiv";
     Jatekter.appendChild(OsszLapokDiv);
-    let index = 0;
-    for(let i = 0; i < 5;i++){
-        let div = document.createElement("div");
-        div.classList = "OsszLapokBelsoDiv";
-        for(let j = 0; j < 3;j++){
+    let DivDarab = [2,2,1];
+    let OtosIndex = 1;
+    for(let k = 0; k < 3;k++){
+        let SorDiv = document.createElement("div");
+        SorDiv.classList = "SorDiv";
+        SorDiv.id = "SorDiv"+k;
+        for(let i = 0; i < DivDarab[k];i++){
+            let div = document.createElement("div");
+            div.classList = "OsszLapokBelsoDiv";
+            div.id = "BSorDiv"+k;
             let div2 = document.createElement("div");
-            div2.classList = "OLBDivs";
-            div2.id = "OLBDiv"+(index++);
+            div2.classList = "StatusIndikatorBal";
             div.appendChild(div2);
+            for(let j = 0; j < 3;j++){
+                let div2 = document.createElement("div");
+                div2.classList = "OLBDivs";
+                div2.id = "OLBDiv"+OtosIndex+j;
+                div.appendChild(div2);
+            }
+            div2 = document.createElement("div");
+            div2.classList = "OLBDivErtek";
+            div2.id = "OLBDivErtek"+OtosIndex;
+            div.appendChild(div2);
+            SorDiv.appendChild(div);
+            OtosIndex++;
         }
-        let div2 = document.createElement("div");
-        div2.classList = "OLBDivErtek";
-        div2.id = "OLBDiv"+(index++);
-        div.appendChild(div2);
-        OsszLapokDiv.appendChild(div);
+        OsszLapokDiv.appendChild(SorDiv);
     }
+    OsztoTablaGen();
+}
+
+function OsztoTablaGen(){
+    let div = document.createElement("div");
+    div.classList = "OsszLapokBelsoDiv";
+    div.id = "OsztoDiv";
+    for(let j = 0; j < 3;j++){
+        let div2 = document.createElement("div");
+        div2.classList = "OLBDivs";
+        div2.id = "OLBDivOszto";
+        div.appendChild(div2);
+    }
+    let div2 = document.createElement("div");
+    div2.classList = "OLBDivErtek";
+    div2.id = "OLBDivErtek";
+    div.appendChild(div2);
+    Jatekter.appendChild(div);
 }
 
 function ChipsTabla(){
@@ -173,6 +204,6 @@ function FelAll(div){
 
 function Main(){
     TablaKiGen();
-    AlapBeallaitasok();
+    //AlapBeallaitasok();
 }
 Main();

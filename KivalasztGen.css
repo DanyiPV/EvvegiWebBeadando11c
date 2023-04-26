@@ -27,40 +27,64 @@ body{
     height: 30%;
     position: absolute;
     border-radius: 15px;
-    bottom: -4vw;
+    bottom: 13vw;
     left: 50%;
     transition: 1.5s;
     transform: translate(-50%, -50%);
+    justify-content: space-around;
+}
+.OsszLapokBelsoDiv div{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.SorDiv{
     display: flex;
     justify-content: space-around;
+    margin-top: .5vw;
+}
+#SorDiv0{
+    justify-content: space-between;
 }
 .TablaOldalraTolas{
     bottom: 9vw !important;
 }
 .OsszLapokBelsoDiv{
-    width: 19vw;
+    width: 30vw;
     height: 11vw;
-    border: 2px solid white;
-    margin-top: 3%;
-    border-radius: 6px;
     display: flex;
     justify-content: space-around;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white
+}
+.StatusIndikatorBal{
+    width: 2vw;
+    background-color: rgba(255, 0, 0, 0.5) !important;
+    border: 2px solid red !important;
+    height: 2vw;
+    margin-top: 3.5vw;
+    margin-right: .4vw;
+    border-radius: 50%;
 }
 .OLBDivs{
     border: 2px solid white;
-    width: 4.7vw;
-    height: 8vw;
+    width: 7vw;
+    height: 9vw;
     border-radius: 5px;
     margin-top: 1.5vw;
+    margin: 0 .2vw;
 }
 .OLBDivErtek{
     border: 2px solid white;
-    width: 2.5vw;
+    width: 5vw;
     height: 2.5vw;
-    border-radius: 25px;
-    margin-top: 4.3vw;
+    border-radius: 10px;
+    margin-top: 3.2vw;
+    margin-left: 1vw;
+}
+
+#OsztoDiv{
+    height: 30%;
+    border-radius: 15px;
+    transition: 1.5s;
+    margin: auto;
+    margin-top: 1.2vw;
 }
 
 .FeketeHatter{
@@ -71,6 +95,7 @@ body{
     width: 100vw;
     height: 100vw;
     z-index: 1;
+    transition: 1s ease-in-out;
 }
 .Lenyilas{
     top: 50% !important;
@@ -203,7 +228,7 @@ body{
     transition: 1.5s;
 }
 #ChipTablaNev p{
-    margin: 15px auto;
+    margin: 8px auto;
     cursor: default;
 }
 .NevFelnyilas{
