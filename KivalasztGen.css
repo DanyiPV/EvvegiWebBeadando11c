@@ -85,6 +85,12 @@ body{
     border-radius: 10px;
     margin-left: 1vw;
 }
+.CoinErtek p{
+    color: greenyellow;
+    text-align: center;
+    font-weight: bold;
+    font-size: .8vw;
+}
 #OsztoDiv{
     height: 30%;
     border-radius: 15px;
@@ -265,4 +271,30 @@ body{
     transition: 1.5s;
     transform: translate(-50%, -50%);
     justify-content: space-around;
+}
+#ZsetonDiv1,#ZsetonDiv2{
+    width: 28vw;
+    height: 6vw;
+    display: flex;
+    border-radius: 15px;
+    margin-top: 0.2vw;
+    transition: 1.5s;
+    justify-content: space-around;
+
+}
+
+.CoinDiv{
+    width: 5vw;
+    height: 5vw;
+    margin: 0 .2vw;
+}
+
+.Chipkepaktiv{
+    width: 150%;
+}
+.Chipkepinaktiv{
+    width: 150%;
+    -webkit-filter: grayscale(100%); 
+    filter: grayscale(100%);
+    
 }

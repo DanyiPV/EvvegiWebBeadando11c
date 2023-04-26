@@ -2,6 +2,7 @@
 var Leteve = false;
 var CoinErtek = 0;
 var Lefutott = false;
+var BotokEllen = undefined;
 //Játéktér
 let Jatekter = document.createElement("div");
 Jatekter.id = "Jatekter";
@@ -103,11 +104,13 @@ function RaKatt(div){
     if(div.dataset.value == "Botok Ellen"){
         document.getElementById("JatekKiGenScript").src = "BotokEllen.js";
         let elemt = document.getElementById("JatekosEllen");
+        BotokEllen = true;
         elemt.classList.remove("Kivalasztva");
     }
     else if(div.dataset.value == "Játékos Ellen"){
         document.getElementById("JatekKiGenScript").src = "JatekosEllen.js";
         let elemt = document.getElementById("BotokEllen");
+        BotokEllen = false;
         elemt.classList.remove("Kivalasztva");
     }
     Indulhat = true;
@@ -130,11 +133,71 @@ function Felallitas(){
 }
 
 function ErtekBedobas(){
+    ErtekMegjelenites();
     setTimeout(FelAll,1500);
     let KiirDiv = document.createElement("div");
     KiirDiv.id = "KiirDiv";
     KiirDiv.innerHTML = "<p>Dobjon be tétet!</p>";
     Jatekter.appendChild(KiirDiv);
+}
+
+function ErtekMegjelenites(){
+    let Tabla = document.getElementById("ChipTabla");
+    let TablaNev = document.getElementById("ChipTablaNev");
+    TablaNev.innerHTML = "<p>$"+CoinErtek+"</p>";
+    let ZsetonDiv1 = document.createElement("div");
+    let ZsetonDiv2 = document.createElement("div");
+    ZsetonDiv1.id = "ZsetonDiv1";
+    ZsetonDiv2.id = "ZsetonDiv2";
+    let chipek = [1,5,25,50,100,500,1000];
+    for(let i = 0;i<7;i++){
+        let CoinDiv = document.createElement("div");
+        CoinDiv.classList = "CoinDiv";
+        let img = document.createElement("img");
+        img.src = "chips/chip"+chipek[i]+".png";
+        if(chipek[i]<=CoinErtek){
+            if(!BotokEllen && i==0){
+                img.classList = "Chipkepinaktiv";
+            }else{
+                img.classList = "Chipkepaktiv";
+                img.setAttribute("onclick","ErtekKatt("+chipek[i]+")")
+            }
+        }else{
+            img.classList = "Chipkepinaktiv";
+        }
+        CoinDiv.appendChild(img);
+        if(i>3){
+            ZsetonDiv2.appendChild(CoinDiv);
+        }else{
+            ZsetonDiv1.appendChild(CoinDiv);
+        }
+    }
+    Tabla.appendChild(ZsetonDiv1);
+    Tabla.appendChild(ZsetonDiv2);
+    
+}
+
+function ErtekKatt(ertek){
+    if(BotokEllen){ 
+        let div = document.getElementById("CoinErtek51");
+        div.dataset.value = Number(div.dataset.value)+ertek;
+        div.innerHTML = "<p>$"+div.dataset.value+"</p>";
+    }else{
+        for(let i = 1;i<6;i++){
+            let div = document.getElementById("CoinErtek"+((i*10)+1));
+            div.dataset.value = Number(div.dataset.value)+(ertek/5);
+            div.innerHTML = "<p>$"+div.dataset.value+"</p>";
+        }
+    }
+
+    CoinErtek -= ertek;
+    ErtekFrissites();
+}
+
+function ErtekFrissites(){
+    let Tabla = document.getElementById("ChipTabla");
+    Tabla.innerHTML = "";
+    ErtekMegjelenites();
 }
 
 function TablaKiGen(){
@@ -174,6 +237,10 @@ function LapokTablaGen(){
                 div2.classList = IDNevek[j];
                 div2.id = IDNevek[j]+OtosIndex+j;
                 KozosErtekDiv.appendChild(div2);
+                if(j==1){
+                    div2.dataset.value = 0;
+                    div2.innerHTML = "<p>$0</p>";
+                }
             }
             div.appendChild(KozosErtekDiv)
             SorDiv.appendChild(div);
@@ -205,11 +272,11 @@ function OsztoTablaGen(){
 function ChipsTabla(){
     let Tabla = document.createElement("div");
     Tabla.id = "ChipTabla";
-    document.getElementById("Jatekter").appendChild(Tabla);
+    Jatekter.appendChild(Tabla);
     let TablaNev = document.createElement("div");
     TablaNev.id = "ChipTablaNev";
-    TablaNev.innerHTML = "<p>Zetons</p>";
-    document.getElementById("Jatekter").appendChild(TablaNev);
+    TablaNev.innerHTML = "<p>$"+CoinErtek+"</p>";
+    Jatekter.appendChild(TablaNev);
 
 }
 
@@ -220,7 +287,8 @@ function FelAll(){
 }
 
 function Main(){
-    TablaKiGen();
     AlapBeallaitasok();
+    TablaKiGen();
 }
+   
 Main();
