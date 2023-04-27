@@ -51,3 +51,4 @@ var kartyaAdatok = [
 {id:50,value:3,sign:''},
 {id:51,value:4,sign:''},
 {id:52,value:4,sign:''}];
+

@@ -132,7 +132,6 @@ function KivalasztasVege(){ //Ha a gombra rálehet kattintani, akkor ezt a függ
 
 function Felallitas(){ //Elsötétített hátteret törli és értéket ad a Chip táblának, vagyis egér ráhuzással fel lehet nyitni
     document.body.removeChild(document.getElementById("FeketeHatterDiv"));
-    document.getElementById("ChipTablaNev").setAttribute("onmouseover","FelAll()");
     if(BotokEllen){
         setTimeout(BotokErtekKiGen,400); //Ha a BotokEllen bool igaz, akkor itt hívja meg a Botok érték kigenerálást
     }
@@ -183,6 +182,7 @@ function ErtekMegjelenites(){ //A bal alsó chippek kigenerálása, és azok els
 function ErtekKatt(ertek){ //Amelyik chipre kattintott, annak az értékét attól függően hogy játékos vagy botok elleni a játék mód, úgy adja hozzá a megfelelő divhez
     //console.log(Number(document.getElementById("CoinErtek11").dataset.value))+(ertek/5);
     InditoGombKiGen();
+    KiirtSzovegEltuntet();
     if(BotokEllen){ 
         let div = document.getElementById("CoinErtek51");
         div.dataset.value = Number(div.dataset.value)+ertek;
@@ -223,6 +223,12 @@ function ErtekFrissites(){ //Frissíti az érétket a chip táblában, az új é
     let Tabla = document.getElementById("ChipTabla");
     Tabla.innerHTML = "";
     ErtekMegjelenites();
+}
+
+function KiirtSzovegEltuntet(){
+    if(document.getElementById("KiirDiv") != undefined){
+        document.getElementById("KiirDiv").id = "KiirEltuntet";
+    }
 }
 
 function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a divekhez hozzáadódnak, kigenerálja a gombot, azt veszi figyelembe hogy önmaga ki van-e generálva
@@ -340,7 +346,7 @@ function Pakli(){ //Bal felül a pakli kigenerálása
         BelsoDiv.classList = "BelsoDiv";
         if(i < 3){
             let img = document.createElement("img");
-            img.src = "card-background.png";
+            img.src = "card-background-elforgatva.png";
             img.style.width = "100%";
             BelsoDiv.appendChild(img);
         }
