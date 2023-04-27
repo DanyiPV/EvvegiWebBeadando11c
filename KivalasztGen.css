@@ -113,7 +113,7 @@ body{
 }
 
 .FeketeHatter{
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
     left: 0;
@@ -121,6 +121,11 @@ body{
     height: 100vw;
     z-index: 1;
     transition: 1s ease-in-out;
+}
+.FeketeHatterEltunteto{
+    animation-name: LassuEltunteto;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
 }
 .Lenyilas{
     top: 50% !important;

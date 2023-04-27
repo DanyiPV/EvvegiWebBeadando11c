@@ -127,6 +127,7 @@ function KivalasztasVege(){ //Ha a gombra rálehet kattintani, akkor ezt a függ
         document.getElementById("BDiv"+i).classList = "BelsoDivek";
     }
     document.getElementById("AlapDiv").classList = "AlapDiv";
+    document.getElementById("FeketeHatterDiv").classList += " FeketeHatterEltunteto";
     setTimeout(Felallitas,2000); //Késlelteti az érték kiválasztó div felcsúszását
 }
 
