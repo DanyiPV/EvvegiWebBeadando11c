@@ -326,6 +326,26 @@ function OsztoTablaGen(){ //Az osztótábal kigenerálása a lapok generálása 
     div2.id = "OsztoDivErtek";
     div.appendChild(div2);
     Jatekter.appendChild(div);
+    Pakli();
+}
+
+function Pakli(){ //Bal felül a pakli kigenerálása
+    let div = document.createElement("div");
+    div.id = "Pakli";
+    div.classList = "Pakli";
+    Jatekter.appendChild(div);
+    for(let i = 0; i < 4;i++){
+        let BelsoDiv = document.createElement("div");
+        BelsoDiv.id = "BelsoDiv"+i;
+        BelsoDiv.classList = "BelsoDiv";
+        if(i < 3){
+            let img = document.createElement("img");
+            img.src = "card-background.png";
+            img.style.width = "100%";
+            BelsoDiv.appendChild(img);
+        }
+        div.appendChild(BelsoDiv);
+    }
 }
 
 function ChipsTabla(){ //A chip tábla kigenerálása, amibe a chipek kerülnek

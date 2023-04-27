@@ -223,6 +223,7 @@ body{
     padding-top: 2.55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555%;
     margin: auto;
 }
+
 #ChipTabla{
     position: absolute;
     width: 30vw;
@@ -262,6 +263,7 @@ body{
 .TablaFelnyilas{
     bottom: 0vw !important;
 }
+
 #KiirDiv{
     color: white;
     text-decoration: underline rgba(255, 0, 0, 0.65);
@@ -310,7 +312,6 @@ body{
     height: 5vw;
     margin: 0 .2vw;
 }
-
 .Chipkepaktiv{
     width: 150%;
 }
@@ -318,5 +319,50 @@ body{
     width: 150%;
     -webkit-filter: grayscale(100%); 
     filter: grayscale(100%);
-    
+}
+
+.Pakli{
+    position: absolute;
+    width: 20.5vw;
+    height: 10vw;
+    right: 0;
+    transform: translate(-7.6vw, -9.7vw);
+    border-radius: 8px;
+}
+.BelsoDiv{
+    position: absolute;
+    width: 15vw;
+    height: 8vw;
+    margin: auto;
+    top: 9.5%;
+    left: 12%;
+    border-radius: 8px;
+}
+.BelsoDiv img{
+    position: absolute;
+    transform: translate(0, -3vw);
+    padding: 0;
+    margin: 0;
+}
+#BelsoDiv0{
+    top: 4%;
+    left: 12%;
+    rotate: 2deg;
+    cursor: pointer;
+}
+#BelsoDiv1{
+    top: 13%;
+    left: 15%;
+    rotate: -3deg;
+    cursor: pointer;
+}
+#BelsoDiv2{
+    top: 13%;
+    left: 9.5%;
+    cursor: pointer;
+}
+#BelsoDiv3{
+    top: 13%;
+    left: 9.5%;
+    cursor: pointer;
 }
