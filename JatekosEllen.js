@@ -58,13 +58,12 @@ var kevert = kartyaAdatok;
 var divSzam;
 var KartyaID;
 
-
 function random(felso, also){
     return Math.floor(Math.random()*(felso-also+1)+also);
 }
 
 function Kever(){
-    for (let i = 0; i < (kevert.length)*2; i++) {
+    for (let i = 0; i < (kevert.length)*15000; i++) {
         let r1 = random(0,kevert.length-1);
         let r2 = random(0,kevert.length-1);
         let c = kevert[r1];

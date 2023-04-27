@@ -15,7 +15,7 @@ body{
     border-radius: 10px;
     top: -50%;
     left: 50%;
-    transition: 1.5s;
+    transition: 1.5s ease-in-out;
     transform: translate(-50%, -50%);
     z-index: 10;
     border: 1px solid white;
@@ -336,15 +336,6 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
 }
-@keyframes LassuMegjelenito{
-    from{opacity: 0;}
-    to{opacity: 1;}
-}
-
-@keyframes LassuEltunteto{
-    from{opacity: 1;}
-    to{opacity: 0;}
-}
 
 .CoinDiv{
     width: 5vw;
@@ -353,6 +344,7 @@ body{
 }
 .Chipkepaktiv{
     width: 150%;
+    cursor: pointer;
 }
 .Chipkepinaktiv{
     width: 150%;
@@ -362,20 +354,21 @@ body{
 
 .Pakli{
     position: absolute;
-    width: 20.5vw;
+    width: 17vw;
     height: 10vw;
     right: 0;
     transform: translate(-7.6vw, -9.7vw);
     border-radius: 8px;
+    padding: 1vw;
 }
 .BelsoDiv{
     position: absolute;
     width: 15vw;
     height: 8vw;
-    margin: auto;
-    top: 9.5%;
+    top: 10%;
     left: 12%;
     border-radius: 8px;
+    margin: .4vw auto;
 }
 .BelsoDiv img{
     position: absolute;
@@ -404,4 +397,13 @@ body{
     top: 13%;
     left: 9.5%;
     cursor: pointer;
+}
+@keyframes LassuMegjelenito{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+@keyframes LassuEltunteto{
+    from{opacity: 1;}
+    to{opacity: 0; visibility: hidden;}
 }
