@@ -55,8 +55,6 @@ var kartyaAdatok = [
 var KartyaKirakasSzamlalo = 0;
 var KartyaIndexH = [10,11,20,21,30,31,40,41,50,51];
 var kevert = kartyaAdatok;
-var divSzam;
-var KartyaID;
 
 function random(felso, also){
     return Math.floor(Math.random()*(felso-also+1)+also);
@@ -87,22 +85,19 @@ function Elrejtes(){
 }
 
 function Kartyak(){
-    divSzam = KartyaIndexH[KartyaKirakasSzamlalo++];
-    KartyaID = kevert[kevert.length-1].id;
-    setTimeout(KartyaMegjelenites,500);
+    setTimeout(KartyaMegjelenites,800,KartyaIndexH[KartyaKirakasSzamlalo++], kevert[kevert.length-1].id);
 }
 
-function KartyaMegjelenites(){
+function KartyaMegjelenites(divSzam, KartyaID){
     if(KartyaKirakasSzamlalo < 11){
         kevert.splice(kevert.indexOf(kevert.length-1),1)
         let img = document.createElement("img");
         let div = document.getElementById("OLBDiv"+divSzam);
-        img.style.width = "100%";
-        img.style.height = "99.8%";
+        img.classList = "KartyaLerakAnim";
         img.src = "kep/"+KartyaID+".png";
         div.appendChild(img);
-        divSzam = KartyaIndexH[KartyaKirakasSzamlalo++];
+        divSzam = KartyaIndexH[KartyaKirakasSzamlalo];
         KartyaID = kevert[kevert.length-1].id;
-        setTimeout(KartyaMegjelenites,500);
+        setTimeout(KartyaMegjelenites,800,KartyaIndexH[KartyaKirakasSzamlalo++], kevert[kevert.length-1].id);
     }
 }

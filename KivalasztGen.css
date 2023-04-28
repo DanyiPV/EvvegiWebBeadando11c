@@ -400,11 +400,25 @@ body{
     top: 13%;
     left: 9.5%;
     cursor: pointer;
+    /*transform: rotate3d(1,0,0,0deg);*/
 }
 #BelsoDiv3{
     top: 13%;
     left: 9.5%;
     cursor: pointer;
+}
+.KartyaLerakAnim{
+    width: 100%;
+    height: 99.9%;
+    margin-top: -2vw;
+    animation-name: KartyaLerakAnim;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes KartyaLerakAnim{
+    from{margin-top: -2vw;}
+    to{margin-top: 0}
 }
 @keyframes LassuMegjelenito{
     from{opacity: 0;}
