@@ -78,6 +78,15 @@ body{
     border-radius: 10px;
     margin-left: 1vw;
 }
+.OLBDivErtek p{
+    text-align: center;
+    margin-top: .5vw;
+    font-size: 1.5vw;
+    color: white;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+}
 .CoinErtek{
     border: 2px solid rgb(0, 102, 255);
     width: 5vw;
@@ -89,7 +98,8 @@ body{
     color: greenyellow;
     text-align: center;
     font-weight: bold;
-    font-size: .8vw;
+    margin-top: .5vw;
+    font-size: 1.5vw;
     animation-name: LassuMegjelenito;
     animation-duration: .7s;
     animation-fill-mode: forwards;
@@ -344,6 +354,24 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
 }
+.InditoGombEltuntet{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12vw;
+    height: 4vw;
+    border-radius: 25px;
+    border: 0;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
+    background-color: rgb(43, 43, 43);
+    color: white;
+    font-size: 1vw;
+    animation-name: LassuEltunteto;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+}
 
 .CoinDiv{
     width: 5vw;
@@ -424,7 +452,6 @@ body{
     from{opacity: 0;}
     to{opacity: 1;}
 }
-
 @keyframes LassuEltunteto{
     from{opacity: 1;}
     to{opacity: 0; visibility: hidden;}

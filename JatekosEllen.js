@@ -73,31 +73,25 @@ function Kever(){
 function general(){
     Kever();
     Elrejtes();
-    Kartyak();
+    setTimeout(KartyaMegjelenites,800,KartyaIndexH[KartyaKirakasSzamlalo++], kevert[kevert.length-1].id);
 }
 
 function Elrejtes(){
-    let button = document.getElementById("InditoGomb");
-    button.style.visibility = "hidden";
-    button.removeAttribute("onclick","general()");
+    document.getElementById("InditoGomb").classList = "InditoGombEltuntet";
+    document.getElementById("InditoGomb").removeAttribute("onclick","general()");
     document.getElementById("ChipTabla").classList.remove("TablaFelnyilas");
     document.getElementById("ChipTablaNev").classList.remove("NevFelnyilas");
 }
 
-function Kartyak(){
-    setTimeout(KartyaMegjelenites,800,KartyaIndexH[KartyaKirakasSzamlalo++], kevert[kevert.length-1].id);
-}
-
 function KartyaMegjelenites(divSzam, KartyaID){
     if(KartyaKirakasSzamlalo < 11){
-        kevert.splice(kevert.indexOf(kevert.length-1),1)
         let img = document.createElement("img");
         let div = document.getElementById("OLBDiv"+divSzam);
         img.classList = "KartyaLerakAnim";
+        img.dataset.value = kevert[kevert.length-1].value;
         img.src = "kep/"+KartyaID+".png";
         div.appendChild(img);
-        divSzam = KartyaIndexH[KartyaKirakasSzamlalo];
-        KartyaID = kevert[kevert.length-1].id;
+        kevert.splice(kevert.indexOf(kevert.length-1),1)
         setTimeout(KartyaMegjelenites,800,KartyaIndexH[KartyaKirakasSzamlalo++], kevert[kevert.length-1].id);
     }
 }
