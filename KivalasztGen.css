@@ -267,6 +267,9 @@ body{
     font-size: 1.8vw;
     transition: 1.5s;
     z-index: 1;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
 }
 #ChipTablaNev p{
     margin: 8px auto;
