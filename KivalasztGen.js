@@ -333,6 +333,8 @@ function OsztoTablaGen(){ //Az osztótábal kigenerálása a lapok generálása 
         div.appendChild(div2);
     }
     let div2 = document.createElement("div");
+    div2.dataset.value = 0;
+    div2.innerHTML = "<p>Ø</p>";
     div2.classList = "OLBDivErtek";
     div2.id = "OsztoDivErtek";
     div.appendChild(div2);
