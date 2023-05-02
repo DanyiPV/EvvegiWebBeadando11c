@@ -1,72 +1,322 @@
 body{
-    background-color: darkgray;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(95, 95, 95);
+    background-image: url(hatter.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    transition: .6s;
 }
+.AlapDiv{
+    position: absolute;
+    height: 39.5vw;
+    width: 24vw;
+    border-radius: 10px;
+    top: -50%;
+    left: 50%;
+    transition: 1.5s;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    border: 1px solid white;
+    box-shadow: 0 0 5px 0.5px white inset, 0 0 5px 0.5px white;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#OsszLapokDiv{
+    width: 98vw;
+    height: 30%;
+    position: absolute;
+    border-radius: 15px;
+    bottom: 13vw;
+    left: 50%;
+    transition: 1.5s;
+    transform: translate(-50%, -50%);
+    justify-content: space-around;
+}
+.OsszLapokBelsoDiv div{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.SorDiv{
+    display: flex;
+    justify-content: space-around;
+    margin-top: .5vw;
+}
+#SorDiv0{
+    justify-content: space-between;
+}
+.TablaOldalraTolas{
+    bottom: 9vw !important;
+}
+.OsszLapokBelsoDiv{
+    width: 30vw;
+    height: 11vw;
+    display: flex;
+    justify-content: space-around;
+}
+.StatusIndikatorBal{
+    width: 2vw;
+    background-color: rgba(255, 0, 0, 0.5) !important;
+    border: 2px solid red !important;
+    height: 2vw;
+    margin-top: 3.5vw;
+    margin-right: .4vw;
+    border-radius: 50%;
+}
+.OLBDivs{
+    border: 2px solid white;
+    width: 7vw;
+    height: 9vw;
+    border-radius: 5px;
+    margin-top: 1.5vw;
+    margin: 0 .2vw;
+}
+.OLBDivErtek{
+    border: 2px solid white;
+    width: 5vw;
+    height: 2.5vw;
+    border-radius: 10px;
+    margin-left: 1vw;
+}
+.CoinErtek{
+    border: 2px solid rgb(0, 102, 255);
+    width: 5vw;
+    height: 2.5vw;
+    border-radius: 10px;
+    margin-left: 1vw;
+}
+.CoinErtek p{
+    color: greenyellow;
+    text-align: center;
+    font-weight: bold;
+    font-size: .8vw;
+}
+#OsztoDiv{
+    height: 30%;
+    border-radius: 15px;
+    transition: 1.5s;
+    margin: auto;
+    margin-top: 1.2vw;
+}
+#OsztoDivErtek{
+    margin-top: 3vw;
+}
+.KozosErtekDiv{
+    background-color: unset !important;
+}
+
+.KozosErtekDiv div{
+    margin-top: 1.3vw;
+}
+
+.FeketeHatter{
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+    z-index: 1;
+    transition: 1s ease-in-out;
+}
+.Lenyilas{
+    top: 50% !important;
+    left: 50% !important;
+}
+
 #BelsoText{
     text-align: center;
-    padding-top: 21%;
-    font-size: xx-large;
+    margin-top: 17.555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555%;
+    font-size: 1.5vw;
 }
-#KivalasztDiv div{
-    border: 2px solid gray;
-    height: 212px;
-    width: 250px;
-    margin: 2%;
-    border-radius: 20px;
+#KivalasztDiv{
+    justify-content: space-around;
+}
+
+.KivalasztotDesign{
+    height: 5.5vw;
+    width: 10vw;
+    color: white;
+    border-radius: 6%;
+    margin-top: 5%;
     cursor: pointer;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
 }
-#BotokEllen{
-    background-color: rgba(128, 128, 128, 0.3);
-    transition: .7s;
-}
-#BotokEllen:hover{
-    background-color: rgba(0, 255, 0, 0.3);
-    border: 2px solid lime;
-    border-radius: 5px;
-    color: white !important;
-}
-#JatekosEllen{
-    background-color: rgba(128, 128, 128, 0.3);
-    transition: .7s;
-}
-#JatekosEllen:hover{
-    background-color: rgba(0, 255, 0, 0.3);
-    border: 2px solid lime;
-    border-radius: 5px;
-    color: white !important;
+.KivalasztotDesign:hover{
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
 }
 #Gomb{
     background-color: rgb(95, 95, 95);
     color: gray;
     border: 2px solid gray;
-    transition: .7s;
     display: block;
     margin: auto;
+    border-radius: 15px;
+    transition: .7s;
+    margin-top: .8vw !important;
+    width: 12vw;
+    height: 2.5vw;
+    font-size: 1.2vw;
 }
 #KivalasztottGomb{
-    background-color: rgb(95, 95, 95);
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
     color: white;
-    border: 2px solid white;
-    transition: .7s;
     display: block;
     margin: auto;
+    margin-top: .8vw !important;
+    border: 0;
+    border-radius: 15px;
+    width: 12vw;
+    height: 2.5vw;
     cursor: pointer;
+    font-size: 1.2vw;
+    background-color: rgb(65, 65, 65);
 }
 #KivalasztottGomb:hover{
-    background-color: rgb(27, 27, 27);
-    border: 2px solid red !important;
-    color: red !important;
-    border-radius: 15px !important;
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
+    border-radius: 5px !important;
 }
 .Kivalasztva{
-    background-color: rgba(0, 255, 0, 0.3) !important;
-    border: 2px solid lime !important;
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255) !important;
     border-radius: 5px !important;
-    color: white !important;
+    background-color: rgb(65, 65, 65);
 }
 #NemValasztHato{
     background-color: rgba(83, 83, 83, 0.5);
     border: 2px solid black !important;
     cursor: default !important;
     color : darkgray !important;
+}
+#ErtekDivTer{
+    height: auto;
+    width: fit-content;
+    margin:  auto;
+    text-align: center;
+}
+#ErtekDivTer>p{
+    font-size: 1.5vw;
+    color: white;
+    text-decoration: underline;
+    margin-top: .8vw;
+    margin-bottom: 0;
+    cursor: default;
+}
+
+.BelsoDivek{
+    margin-top: 1.1vw !important;
+    height: 2.6vw;
+    width: 20vw;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
+}
+.BelsoDivek:hover{
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
+}
+.BelsoDivek p{
+    font-size: 1.3vw;
+    padding-top: 2.55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555%;
+    margin: auto;
+}
+#ChipTabla{
+    position: absolute;
+    width: 30vw;
+    height: 13.25vw;
+    border: 1px solid white;
+    border-top-right-radius: 20px;
+    bottom: -14vw;
+    left: 0;
+    background-color: green;
+    transition: 1.5s;
+    z-index: 1;
+}
+#ChipTablaNev{
+    position: absolute;
+    background-color: green;
+    width: 8vw;
+    height: 3vw;
+    border: 1px solid white;
+    border-bottom: 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    bottom: -.7vw;
+    left: 0;
+    text-align: center;
+    color: white;
+    font-size: 1.8vw;
+    transition: 1.5s;
+    z-index: 1;
+}
+#ChipTablaNev p{
+    margin: 8px auto;
+    cursor: default;
+}
+.NevFelnyilas{
+    bottom: 13.25vw !important;
+}
+.TablaFelnyilas{
+    bottom: 0vw !important;
+}
+#KiirDiv{
+    color: white;
+    text-decoration: underline rgba(255, 0, 0, 0.65);
+    font-size: 4vw;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transition: 1.5s;
+    transform: translate(-50%, -50%);
+    justify-content: space-around;
+}
+#ZsetonDiv1,#ZsetonDiv2{
+    width: 28vw;
+    height: 6vw;
+    display: flex;
+    border-radius: 15px;
+    margin-top: 0.2vw;
+    transition: 1.5s;
+    justify-content: space-around;
+
+}
+
+.InditoGomb{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12vw;
+    height: 4vw;
+    border-radius: 25px;
+    border: 0;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
+    background-color: rgb(43, 43, 43);
+    color: white;
+    font-size: 1vw;
+    cursor: pointer;
+}
+.InditoGomb:hover{
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
+}
+
+.CoinDiv{
+    width: 5vw;
+    height: 5vw;
+    margin: 0 .2vw;
+}
+
+.Chipkepaktiv{
+    width: 150%;
+}
+.Chipkepinaktiv{
+    width: 150%;
+    -webkit-filter: grayscale(100%); 
+    filter: grayscale(100%);
+    
 }
