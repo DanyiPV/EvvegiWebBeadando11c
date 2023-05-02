@@ -15,7 +15,7 @@ body{
     border-radius: 10px;
     top: -50%;
     left: 50%;
-    transition: 1.5s;
+    transition: 1.5s ease-in-out;
     transform: translate(-50%, -50%);
     z-index: 10;
     border: 1px solid white;
@@ -78,6 +78,15 @@ body{
     border-radius: 10px;
     margin-left: 1vw;
 }
+.OLBDivErtek p{
+    text-align: center;
+    margin-top: .5vw;
+    font-size: 1.5vw;
+    color: white;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+}
 .CoinErtek{
     border: 2px solid rgb(0, 102, 255);
     width: 5vw;
@@ -89,7 +98,11 @@ body{
     color: greenyellow;
     text-align: center;
     font-weight: bold;
-    font-size: .8vw;
+    margin-top: .5vw;
+    font-size: 1.5vw;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
 }
 #OsztoDiv{
     height: 30%;
@@ -110,7 +123,7 @@ body{
 }
 
 .FeketeHatter{
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
     left: 0;
@@ -118,6 +131,11 @@ body{
     height: 100vw;
     z-index: 1;
     transition: 1s ease-in-out;
+}
+.FeketeHatterEltunteto{
+    animation-name: LassuEltunteto;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
 }
 .Lenyilas{
     top: 50% !important;
@@ -158,7 +176,11 @@ body{
     width: 12vw;
     height: 2.5vw;
     font-size: 1.2vw;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
 }
+
 #KivalasztottGomb{
     transition: all .4s ease-in-out;
     box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
@@ -194,6 +216,9 @@ body{
     width: fit-content;
     margin:  auto;
     text-align: center;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
 }
 #ErtekDivTer>p{
     font-size: 1.5vw;
@@ -223,6 +248,7 @@ body{
     padding-top: 2.55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555%;
     margin: auto;
 }
+
 #ChipTabla{
     position: absolute;
     width: 30vw;
@@ -251,6 +277,9 @@ body{
     font-size: 1.8vw;
     transition: 1.5s;
     z-index: 1;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
 }
 #ChipTablaNev p{
     margin: 8px auto;
@@ -262,6 +291,7 @@ body{
 .TablaFelnyilas{
     bottom: 0vw !important;
 }
+
 #KiirDiv{
     color: white;
     text-decoration: underline rgba(255, 0, 0, 0.65);
@@ -272,7 +302,25 @@ body{
     transition: 1.5s;
     transform: translate(-50%, -50%);
     justify-content: space-around;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
 }
+#KiirEltuntet{
+    color: white;
+    text-decoration: underline rgba(255, 0, 0, 0.65);
+    font-size: 4vw;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transition: 1.5s;
+    transform: translate(-50%, -50%);
+    justify-content: space-around;
+    animation-name: LassuEltunteto;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+}
+
 #ZsetonDiv1,#ZsetonDiv2{
     width: 28vw;
     height: 6vw;
@@ -281,7 +329,6 @@ body{
     margin-top: 0.2vw;
     transition: 1.5s;
     justify-content: space-around;
-
 }
 
 .InditoGomb{
@@ -299,10 +346,31 @@ body{
     color: white;
     font-size: 1vw;
     cursor: pointer;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
 }
 .InditoGomb:hover{
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
+}
+.InditoGombEltuntet{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12vw;
+    height: 4vw;
+    border-radius: 25px;
+    border: 0;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
+    background-color: rgb(43, 43, 43);
+    color: white;
+    font-size: 1vw;
+    animation-name: LassuEltunteto;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
 }
 
 .CoinDiv{
@@ -310,13 +378,81 @@ body{
     height: 5vw;
     margin: 0 .2vw;
 }
-
 .Chipkepaktiv{
     width: 150%;
+    cursor: pointer;
 }
 .Chipkepinaktiv{
     width: 150%;
     -webkit-filter: grayscale(100%); 
     filter: grayscale(100%);
-    
+}
+
+.Pakli{
+    position: absolute;
+    width: 17vw;
+    height: 10vw;
+    right: 0;
+    transform: translate(-7.6vw, -7.5vw);
+    border-radius: 8px;
+    padding: 1vw;
+}
+.BelsoDiv{
+    position: absolute;
+    width: 15vw;
+    height: 8vw;
+    top: 10%;
+    left: 12%;
+    border-radius: 8px;
+    margin: .4vw auto;
+}
+.BelsoDiv img{
+    position: absolute;
+    transform: translate(0, -3vw);
+    padding: 0;
+    margin: 0;
+}
+#BelsoDiv0{
+    top: 4%;
+    left: 12%;
+    rotate: 2deg;
+    cursor: pointer;
+}
+#BelsoDiv1{
+    top: 13%;
+    left: 15%;
+    rotate: -3deg;
+    cursor: pointer;
+}
+#BelsoDiv2{
+    top: 13%;
+    left: 9.5%;
+    cursor: pointer;
+    /*transform: rotate3d(1,0,0,0deg);*/
+}
+#BelsoDiv3{
+    top: 13%;
+    left: 9.5%;
+    cursor: pointer;
+}
+.KartyaLerakAnim{
+    width: 100%;
+    height: 99.9%;
+    margin-top: -2vw;
+    animation-name: KartyaLerakAnim;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes KartyaLerakAnim{
+    from{margin-top: -2vw;}
+    to{margin-top: 0}
+}
+@keyframes LassuMegjelenito{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+@keyframes LassuEltunteto{
+    from{opacity: 1;}
+    to{opacity: 0; visibility: hidden;}
 }
