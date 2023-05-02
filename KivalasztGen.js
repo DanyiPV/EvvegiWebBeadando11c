@@ -247,7 +247,7 @@ function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a di
 function BotokErtekKiGen(){ //Ha a játék mód a botok elleni, akkor az első 4 divbe kigenerálja az értékeket százalékosan, és az értékekhez van rendelve a nehézségi szint
     let BotokErtek = [{type: "könnyű", value: 50},{type: "könnyű", value: 100},{type: "normál", value: 250},{type: "normál", value: 500},
     {type: "nehéz", value: 1000},{type: "nehéz", value: 2500},{type: "insane", value: 5000}];
-    let Botok = ["CoinErtek11","CoinErtek21","CoinErtek31","CoinErtek41"];
+    let Botok = [{ertek: "CoinErtek11", difficulty: "BSorDiv0"},{ertek: "CoinErtek21", difficulty: "BSorDiv1"},{ertek: "CoinErtek31", difficulty: "BSorDiv2"},{ertek: "CoinErtek41", difficulty: "BSorDiv3"}];
     for(let i = 0; i < Botok.length;i++){
         let szazalekolas = Math.floor(Math.random()*100+1);
         let random = 0;
@@ -260,9 +260,9 @@ function BotokErtekKiGen(){ //Ha a játék mód a botok elleni, akkor az első 4
         else{
             random = 6;
         }
-        document.getElementById(Botok[i]).dataset.value = BotokErtek[random].value;
-        document.getElementById(Botok[i]).dataset.difficulty = BotokErtek[random].type;
-        document.getElementById(Botok[i]).innerHTML = "<p>$"+document.getElementById(Botok[i]).dataset.value+"</p>";
+        document.getElementById(Botok[i].ertek).dataset.value = BotokErtek[random].value;
+        document.getElementById(Botok[i].difficulty).dataset.difficulty = BotokErtek[random].type;
+        document.getElementById(Botok[i].ertek).innerHTML = "<p>$"+document.getElementById(Botok[i].ertek).dataset.value+"</p>";
     }
 }
 
@@ -278,6 +278,7 @@ function LapokTablaGen(){ //Az 5 játékos/bot kártya divjeinek a kigenerálás
     Jatekter.appendChild(OsszLapokDiv);
     let DivDarab = [2,2,1];
     let OtosIndex = 1;
+    let BelsoSordDivIndex = 0;
     let IDNevek = ["OLBDivErtek","CoinErtek"];
     for(let k = 0; k < 3;k++){
         let SorDiv = document.createElement("div");
@@ -286,7 +287,7 @@ function LapokTablaGen(){ //Az 5 játékos/bot kártya divjeinek a kigenerálás
         for(let i = 0; i < DivDarab[k];i++){
             let div = document.createElement("div");
             div.classList = "OsszLapokBelsoDiv";
-            div.id = "BSorDiv"+k;
+            div.id = "BSorDiv"+BelsoSordDivIndex++;
             let div2 = document.createElement("div");
             div2.classList = "StatusIndikatorBal";
             div.appendChild(div2);
@@ -306,6 +307,9 @@ function LapokTablaGen(){ //Az 5 játékos/bot kártya divjeinek a kigenerálás
                 if(j==1){
                     div2.dataset.value = 0;
                     div2.innerHTML = "<p>$0</p>";
+                }else{
+                    div2.dataset.value = 0;
+                    div2.innerHTML = "<p>Ø</p>";
                 }
             }
             div.appendChild(KozosErtekDiv)
@@ -329,6 +333,8 @@ function OsztoTablaGen(){ //Az osztótábal kigenerálása a lapok generálása 
         div.appendChild(div2);
     }
     let div2 = document.createElement("div");
+    div2.dataset.value = 0;
+    div2.innerHTML = "<p>Ø</p>";
     div2.classList = "OLBDivErtek";
     div2.id = "OsztoDivErtek";
     div.appendChild(div2);
