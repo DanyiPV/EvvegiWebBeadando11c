@@ -43,7 +43,7 @@ var kartyaAdatok = [
 {id:41,value:10,sign:''},
 {id:42,value:10,sign:''},
 {id:43,value:10,sign:''},
-{id:44,value:10,sign:''},
+{id:44,value:3,sign:''},
 {id:45,value:10,sign:''},
 {id:46,value:10,sign:''},
 {id:47,value:10,sign:''},
@@ -148,7 +148,15 @@ function KartyaOsszeg(){
                 }
             }
         }
-        document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).innerHTML = "<p>"+document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value+"</p>";
+        document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).innerHTML = "<p>"+document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value+"</p>";         
+    }
+    if((Number(document.getElementById("OLBDivOszto0").dataset.value)+Number(document.getElementById("OLBDivOszto0").dataset.value))==21){
+        JatekVege();
+    }
+    else if(document.getElementById("OsztoDivErtek").dataset.value != undefined){
+        if( document.getElementById("OsztoDivErtek").dataset.value>0){
+            JatekKezdes();
+        }
     }
 }
 
@@ -175,4 +183,57 @@ function OsztoKartyaLerak(src, id, bool){
     else{
         KartyaOsszeg();
     }
+}
+
+var plr = 0;
+var GombDiv;
+function JatekKezdes(){
+    let JatekosDivek = ["BSorDiv0","BSorDiv2","BSorDiv4","BSorDiv3","BSorDiv1"];
+    if(plr<5){
+        for(let j = 0; j<5;j++){
+            if(document.getElementById(JatekosDivek[j]).firstChild.classList.contains("StatusIndikatorBalAktiv")){
+                document.getElementById(JatekosDivek[j]).firstChild.classList.remove("StatusIndikatorBalAktiv");
+            }
+        }
+        document.getElementById(JatekosDivek[plr]).firstChild.classList.add("StatusIndikatorBalAktiv");
+        if(plr == 0){
+            GombDiv = document.createElement("div");
+            GombDiv.id = "GombDiv";
+            let HuzasGomb = document.createElement("button");
+            HuzasGomb.id = "HuzasGomb";
+            HuzasGomb.textContent = "Húz";
+            let MegallGomb = document.createElement("button");
+            MegallGomb.id = "MegallGomb";
+            MegallGomb.textContent = "Megáll";
+            HuzasGomb.setAttribute("onclick","Huzas()");
+            MegallGomb.setAttribute("onclick","Tovabb()");
+            GombDiv.appendChild(HuzasGomb);
+            GombDiv.appendChild(MegallGomb);
+            document.getElementById("Jatekter").appendChild(GombDiv);
+        }
+    }else{
+        for(let j = 0; j<5;j++){
+            if(document.getElementById(JatekosDivek[j]).firstChild.classList.contains("StatusIndikatorBalAktiv")){
+                document.getElementById(JatekosDivek[j]).firstChild.classList.remove("StatusIndikatorBalAktiv");
+            }
+        }
+        JatekVege();
+    }
+
+    
+}
+
+function Huzas(){
+    console.log("büdös kukker");
+}
+
+function Tovabb(){
+    plr++;
+    JatekKezdes();
+}
+
+function JatekVege(){
+    GombDiv.style.display = "none";
+    //console.log(document.getElementById("GombDiv"));
+    console.log("vége");
 }
