@@ -409,7 +409,7 @@ body{
 }
 .KartyaLerakAnim{
     width: 100%;
-    height: 99.9%;
+    height: 100%;
     margin-top: -2vw;
     animation-name: KartyaLerakAnim;
     animation-duration: 1.2s;
