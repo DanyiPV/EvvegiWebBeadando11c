@@ -148,10 +148,10 @@ function KartyaOsszeg(){
         }
         document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).innerHTML = "<p>"+document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value+"</p>";  
         if(Number(document.getElementById(JatekosKartyaID[i][3]).dataset.value) == 21){
-            document.getElementById(JatekosKartyaID[i][3]).style.border = "2px solid goldenrod";
+            document.getElementById(JatekosKartyaID[i][3]).classList.add("OsszEredmenyNyert");
         }
         else if(Number(document.getElementById(JatekosKartyaID[i][3]).dataset.value) > 21){
-            document.getElementById(JatekosKartyaID[i][3]).style.border = "2px solid red";
+            document.getElementById(JatekosKartyaID[i][3]).classList.add("OsszEredmenyNemNyert");
         }
         if(HuzasGomb != undefined){
             if(HuzasGomb.getattribute == null){
@@ -226,11 +226,11 @@ function JatekKezdes(){
     }
     if(plr<5){
         if(Number(document.getElementById(JatekosLapErtekek[plr]).dataset.value) == 21){
-            document.getElementById(JatekosLapErtekek[plr]).style.border = "2px solid goldenrod";
+            document.getElementById(JatekosLapErtekek[plr]).classList.add("OsszEredmenyNyert");
             Tovabb();
         }
         else if(Number(document.getElementById(JatekosLapErtekek[plr]).dataset.value) > 21){
-            document.getElementById(JatekosLapErtekek[plr]).style.border = "2px solid red";
+            document.getElementById(JatekosLapErtekek[plr]).classList.add("OsszEredmenyNemNyert");
             Tovabb();
         }
         else{
@@ -281,16 +281,25 @@ function Tovabb(){
 }
 
 function JatekVege(){
+    jatekVege = true;
     if(JatekosGombDiv != undefined){
         JatekosGombDiv.style.display = "none";
     }
-    jatekVege = true;
-    setTimeout(OsztoOsszegzes,2000);
+    if(!osztoBJ){
+        setTimeout(OsztoOsszegzes,2000);
+    }
+    else{
+        document.getElementById("OsztoDivErtek").innerHTML = "<p>"+21+"</p>";
+        document.getElementById("OsztoDivErtek").dataset.value = 21;
+        document.getElementById("OsztoDivErtek").classList.add("OsszEredmenyNyert");
+        OsztoMasodikKartya();
+
+    }
     //Leszamolas();
     //UjKor();
 }
 
-function OsztoOsszegzes(){
+function OsztoMasodikKartya(){
     let leforditottKartya = document.getElementById("OLBDivOszto1").firstChild;
     let felforditottKartya = document.createElement("img");
     felforditottKartya.classList.add("KartyaLerakAnim");
@@ -300,6 +309,10 @@ function OsztoOsszegzes(){
     felforditottKartya.src = "kep/"+leforditottKartya.dataset.kepid+".png";
     document.getElementById("OLBDivOszto1").innerHTML = "";
     document.getElementById("OLBDivOszto1").appendChild(felforditottKartya);
+}
+
+function OsztoOsszegzes(){
+    OsztoMasodikKartya();
     setTimeout(KartyaOsszeg,1000);
     setTimeout(OsztoKartyaHuzas,2500);
 }
