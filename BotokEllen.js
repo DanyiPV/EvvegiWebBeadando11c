@@ -177,7 +177,7 @@ function KartyaOsszeg(){
             }
         }
         document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).innerHTML = "<p>"+document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value+"</p>";
-        if(document.getElementById("OsztoDivErtek").dataset.value != 0 && (teljesveg == undefined || teljesveg == false)){
+        if(document.getElementById("OsztoDivErtek").dataset.value != 0){
             setTimeout(JatekKezdet,700,ErtekDivArray[ErtekLepteto], true);  
         }
     }
@@ -209,19 +209,21 @@ function OsztoKartyaLerak(src, id, bool){
 }
 
 function JatekosVege(osztoigaze, divid, teljesveg){
-    if(osztoigaze){
+    if(teljesveg){
         for(let i = 0; i < ErtekDivArray.length;i++){
-            document.getElementById(ErtekDivArray[i]).firstChild.classList += " JatekVegIndikatorok";
+            if(ErtekDivArray[i] != divid){
+                document.getElementById(ErtekDivArray[i]).firstChild.classList += " JatekVegIndikatorok";
+            }
         }
     }
     else{
-        document.getElementById(divid).firstChild.classList = "StatusIndikatorBalAktiv";
-        if(teljesveg){
+        if(osztoigaze){
             for(let i = 0; i < ErtekDivArray.length;i++){
-                if(ErtekDivArray[i] != divid){
-                    document.getElementById(ErtekDivArray[i]).firstChild.classList += " JatekVegIndikatorok";
-                }
+                document.getElementById(ErtekDivArray[i]).firstChild.classList += " JatekVegIndikatorok";
             }
+        }
+        else{
+            document.getElementById(divid).firstChild.classList = "StatusIndikatorBalAktiv";
         }
     }
 }
