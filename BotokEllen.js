@@ -122,12 +122,20 @@ function KartyaOsszeg(){
                     if((document.getElementById("OLBDivOszto0").firstChild.dataset.value == "10" && document.getElementById("OLBDivOszto1").firstChild.dataset.value == "Ász") ||
                     (document.getElementById("OLBDivOszto0").firstChild.dataset.value == "Ász" && document.getElementById("OLBDivOszto1").firstChild.dataset.value == "10")){
                         setTimeout(JatekosVege,700,true,"semmi", false);
+                        document.getElementById("OsztoDivErtek").innerHTML = "<p>21</p>";
+                        document.getElementById("OsztoDivErtek").classList += " OsszEredmenyNyert";
                     }
                 }
-                let osszeg = Number(document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value);
-                osszeg += Number(document.getElementById(JatekosKartyaID[i][j]).firstChild.dataset.value);
-                document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value = osszeg;
-                if(JatekosKartyaID[i][j][JatekosKartyaID[i][j].length-1] != '2'){
+                if(i == 5 || document.getElementById("OLBDivErtek"+(i+1)+"0").classList == "OLBDivErtek"){
+                    let osszeg = Number(document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value);
+                    osszeg += Number(document.getElementById(JatekosKartyaID[i][j]).firstChild.dataset.value);
+                    if(osszeg == 21){
+                        document.getElementById("OLBDivErtek"+(i+1)+"0").classList += " OsszEredmenyNyert";
+                    }
+                    else if(osszeg > 21){
+                        cument.getElementById("OLBDivErtek"+(i+1)+"0").classList += " OsszEredmenyNemNyert";
+                    }
+                    document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value = osszeg;
                     document.getElementById(JatekosKartyaID[i][j]).firstChild.dataset.hozzaadva = true;
                 }
             }
@@ -147,22 +155,30 @@ function KartyaOsszeg(){
                         }
                     }
                 }
-                if(ossz > 10){
-                    let osszeg = Number(document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value);
-                    document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value = osszeg+1;
+                if(ossz == 21){
+                    document.getElementById("OLBDivErtek"+(i+1)+"0").classList += " OsszEredmenyNyert";
                 }
-                else if(ossz < 11){
-                    let osszeg = Number(document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value);
-                    document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value = osszeg+11;
+                else if(ossz > 21){
+                    cument.getElementById("OLBDivErtek"+(i+1)+"0").classList += " OsszEredmenyNemNyert";
                 }
-                if(document.getElementById(JatekosKartyaID[i][j]).firstChild.dataset.value == "Ász"){
-                    document.getElementById(JatekosKartyaID[i][j]).firstChild.dataset.hozzaadva = "true";
+                if(ossz < 21){
+                    if(ossz > 10){
+                        let osszeg = Number(document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value);
+                        document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value = osszeg+1;
+                    }
+                    else if(ossz < 11){
+                        let osszeg = Number(document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value);
+                        document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value = osszeg+11;
+                    }
+                    if(document.getElementById(JatekosKartyaID[i][j]).firstChild.dataset.value == "Ász"){
+                        document.getElementById(JatekosKartyaID[i][j]).firstChild.dataset.hozzaadva = "true";
+                    }
                 }
             }
         }
         document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).innerHTML = "<p>"+document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value+"</p>";
-        if(document.getElementById("OsztoDivErtek").dataset.value != 0 && teljesveg == false){
-            setTimeout(JatekKezdet,700,ErtekDivArray[ErtekLepteto], true);
+        if(document.getElementById("OsztoDivErtek").dataset.value != 0 && (teljesveg == undefined || teljesveg == false)){
+            setTimeout(JatekKezdet,700,ErtekDivArray[ErtekLepteto], true);  
         }
     }
 }
@@ -223,7 +239,13 @@ function JatekKezdet(divid, bote){
             KonnyuBotIQ(divid);
         }
         else if(dif == "normal"){
-            
+            NormalBotIQ(divid);
+        }
+        else if(dif == "nehéz"){
+            NehezBotIQ(divid);
+        }
+        else if(dif == "insane"){
+            InsaneBotIQ(divid);
         }
     }
     /*let HuzoButton = document.createElement("input");

@@ -498,6 +498,16 @@ body{
     box-shadow: 0 0 10px 0 rgb(0, 223, 0) inset, 0 0 10px 4px rgb(0, 223, 0);
     color: black;
 }
+.OsszEredmenyNyert{
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 15px 8px goldenrod inset, 0 0 15px 8px goldenrod;
+    background-color: rgba(0, 0, 0, 0.8) !important;  
+}
+.OsszEredmenyNemNyert{
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 15px 8px red inset, 0 0 15px 8px red;
+    background-color: rgba(0, 0, 0, 0.8) !important; 
+}
 
 @keyframes KartyaLerakAnim{
     from{margin-top: -2vw;}
