@@ -68,8 +68,9 @@ body{
 }
 .StatusIndikatorBalAktiv{
     width: 2vw;
-    background-color: rgba(4, 133, 4, 0.5) !important;
-    border: 2px solid green !important;
+    background-color: rgba(18, 119, 18, 0.774) !important;
+    box-shadow: 0 0 15px 5px lime inset, 0 0 10px 3px lime;
+    border: 2px solid greenyellow !important;
     height: 2vw;
     margin-top: 3.5vw;
     margin-right: .4vw;
