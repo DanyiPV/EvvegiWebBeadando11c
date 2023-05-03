@@ -64,6 +64,7 @@ var HuzasGomb = undefined;
 var MegallGomb = undefined;
 var GombGen = false;
 var jatekVege = false;
+var osztoBJ = false;
 
 
 function random(felso, also){
@@ -159,11 +160,15 @@ function KartyaOsszeg(){
             }
         }
     }
-    if((Number(document.getElementById("OLBDivOszto0").dataset.value)+Number(document.getElementById("OLBDivOszto0").dataset.value))==21){
-        JatekVege();
+    if(document.getElementById("OLBDivOszto0").firstChild != undefined && document.getElementById("OLBDivOszto1").firstChild != undefined){
+        if(((document.getElementById("OLBDivOszto0").firstChild.dataset.value == "10" && document.getElementById("OLBDivOszto1").firstChild.dataset.value == "Ász") || 
+        (document.getElementById("OLBDivOszto0").firstChild.dataset.value == "Ász" && document.getElementById("OLBDivOszto1").firstChild.dataset.value == "10"))){
+            osztoBJ = true;
+            JatekVege();
+        }
     }
-    else if(document.getElementById("OsztoDivErtek").dataset.value != undefined){
-        if( document.getElementById("OsztoDivErtek").dataset.value>0){
+    if(document.getElementById("OsztoDivErtek").dataset.value != undefined){
+        if(document.getElementById("OsztoDivErtek").dataset.value>0 && !osztoBJ){
             JatekKezdes();
         }
     }
@@ -276,7 +281,9 @@ function Tovabb(){
 }
 
 function JatekVege(){
-    JatekosGombDiv.style.display = "none";
+    if(JatekosGombDiv != undefined){
+        JatekosGombDiv.style.display = "none";
+    }
     jatekVege = true;
     setTimeout(OsztoOsszegzes,2000);
     //Leszamolas();
@@ -327,4 +334,5 @@ function ValtozoVisszaAllitas(){
     MegallGomb = undefined;
     GombGen = false;
     jatekVege = false;
+    osztoBJ = false;
 }
