@@ -115,7 +115,7 @@ function KartyaMegjelenites(divSzam, KartyaID){
             setTimeout(KartyaOsszeg,1200);
         }
         if(KartyaKirakasSzamlalo == 10){
-            setTimeout(OsztoKartyaLerak,2000,"card-background-felallitva.png", KartyaIndexH[KartyaIndexH.length-1], false);
+            setTimeout(OsztoKartyaLerak,2000,"card-background.png", KartyaIndexH[KartyaIndexH.length-1], false);
         }
     }
 }
