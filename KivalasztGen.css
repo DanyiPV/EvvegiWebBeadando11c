@@ -465,6 +465,16 @@ body{
     animation-duration: .7s;
     animation-fill-mode: forwards;
 }
+#JatekosGombDiv{
+    border: 1px solid white ;
+    
+}
+#HuzasGomb{
+    background-color: green;
+}
+#MegallGomb{
+    background-color: green;
+}
 
 
 @keyframes KartyaLerakAnim{
