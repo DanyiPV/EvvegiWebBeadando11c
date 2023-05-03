@@ -466,16 +466,38 @@ body{
     animation-fill-mode: forwards;
 }
 #JatekosGombDiv{
-    border: 1px solid white ;
-    
+    width: fit-content;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 43vw;
+    right: 0;
 }
-#HuzasGomb{
-    background-color: green;
+#HuzasGomb, #MegallGomb{
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
+    border: 0;
+    margin: .8vw;
+    height: 4vw;
+    width: 9vw;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.5vw;
 }
-#MegallGomb{
-    background-color: green;
+#HuzasGomb:hover, #MegallGomb:hover{
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
+    border-radius: 10px;
 }
-
+#MegallGomb:hover{
+    color: black;
+    box-shadow: 0 0 10px 0 red inset, 0 0 10px 4px red;
+    background-color: rgb(185, 103, 103);
+}
+#HuzasGomb:hover{
+    background-color: rgb(92, 185, 92);
+    box-shadow: 0 0 10px 0 rgb(0, 223, 0) inset, 0 0 10px 4px rgb(0, 223, 0);
+    color: black;
+}
 
 @keyframes KartyaLerakAnim{
     from{margin-top: -2vw;}
