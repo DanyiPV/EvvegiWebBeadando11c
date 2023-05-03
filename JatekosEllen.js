@@ -65,6 +65,7 @@ var MegallGomb = undefined;
 var GombGen = false;
 var jatekVege = false;
 
+
 function random(felso, also){
     return Math.floor(Math.random()*(felso-also+1)+also);
 }
