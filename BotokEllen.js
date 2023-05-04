@@ -124,10 +124,8 @@ function KartyaOsszeg(){
                     (document.getElementById("OLBDivOszto0").firstChild.dataset.value == 'Ász' && document.getElementById("OLBDivOszto1").firstChild.dataset.value == '10')){
                         setTimeout(JatekosVege,700,true,"semmi", true);
                         teljesveg = true;
-                        document.getElementById("OsztoDivErtek").innerHTML = "<p>21</p>";
                         document.getElementById("OsztoDivErtek").classList += " OsszEredmenyNyert";
                         document.getElementById("OsztoDivErtek").dataset.value = "vége";
-                        console.log("ász");
                     }
                 }
                 if(i == 5 || document.getElementById("OLBDivErtek"+(i+1)*10).classList == "OLBDivErtek"){
@@ -215,6 +213,7 @@ function OsztoKartyaLerak(src, id, bool){
 
 function JatekosVege(osztoigaze, divid, teljesveg){
     if(teljesveg){
+        document.getElementById("OsztoDivErtek").innerHTML = "<p>21</p>";
         for(let i = 0; i < ErtekDivArray.length;i++){
             if(ErtekDivArray[i] != divid){
                 document.getElementById(ErtekDivArray[i]).firstChild.classList += " JatekVegIndikatorok";
