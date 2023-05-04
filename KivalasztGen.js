@@ -353,7 +353,7 @@ function Pakli(){ //Bal felül a pakli kigenerálása
         BelsoDiv.classList = "BelsoDiv";
         if(i < 3){
             let img = document.createElement("img");
-            img.src = "card-background-elforgatva.png";
+            img.src = "card-background.png";
             img.style.width = "100%";
             BelsoDiv.appendChild(img);
         }
