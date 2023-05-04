@@ -210,6 +210,7 @@ function ErtekKatt(ertek){ //Amelyik chipre kattintott, annak az értékét att�
         }
     }
     CoinErtek -= ertek;
+    document.getElementById("ChipTablaNev").dataset.value = CoinErtek;
     ErtekFrissites();
 }
 

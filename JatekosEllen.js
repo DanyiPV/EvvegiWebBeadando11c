@@ -237,7 +237,7 @@ function JatekKezdes(){
             document.getElementById(JatekosDivek[plr]).firstChild.classList.add("StatusIndikatorBalAktiv");
         }
     }
-    else{
+    else if (Number(document.getElementById("OsztoDivErtek").firstChild.innerHTML)){
         if(!jatekVege){
             JatekVege();
         }
@@ -295,7 +295,7 @@ function JatekVege(){
         OsztoMasodikKartya();
 
     }
-    //Leszamolas();
+    setTimeout(Leszamolas,10000);
     //UjKor();
 }
 
@@ -326,10 +326,28 @@ function OsztoKartyaHuzas(){
         KartyaHuzas("OLBDivOszto2",kevert[kevert.length-1].id);
         setTimeout(OsztoKartyaHuzas,2500);
     }
+    
 }
 
 function Leszamolas(){
+    let ossz = 0;
+    let osztoErtek = Number(document.getElementById("OsztoDivErtek").firstChild.innerHTML)
+    for (let i = 1; i <= 5; i++) {
+        let lapErtek = Number(document.getElementById("OLBDivErtek"+i+"0").firstChild.innerHTML);
+        let coinString = document.getElementById("CoinErtek"+i+"1").firstChild.innerHTML.split("$");
+        let coinErtek = Number(coinString[1]);
+        if(lapErtek>osztoErtek && lapErtek<=21)//ha 21 alatt vagy es osztonal tobb
+            ossz += coinErtek*2
 
+        if(lapErtek == osztoErtek)//ha dontetlen
+            ossz += coinErtek
+
+        if(osztoErtek>21 && lapErtek<=21) // ha oszto tullepi
+            ossz += coinErtek*2
+    }
+    document.getElementById("ChipTablaNev").dataset.value = ossz;
+    let div = document.getElementById("ChipTablaNev").dataset.value
+    document.getElementById("ChipTablaNev").firstChild.innerHTML = "<p>$"+String(div)+"</p>"
 }
 
 function UjKor(){
