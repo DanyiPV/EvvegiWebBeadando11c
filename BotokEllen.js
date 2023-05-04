@@ -119,7 +119,7 @@ function KartyaOsszeg(){
                 if(JatekosKartyaID[i][j] == "OLBDivOszto0"){
                     osszeg = Number(document.getElementById("OLBDivOszto0").dataset.value) + Number(document.getElementById("OLBDivOszto1").dataset.value);
                     if(osszeg == 21){
-                        JatekVege();
+                        OsztoJatekVege();
                     }
                 }
                 let osszeg = Number(document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1]).dataset.value);
@@ -187,6 +187,18 @@ function OsztoKartyaLerak(src, id, bool){
     }
 }
 
-function JatekVege(){
+function OsztoJatekVege(){
+    let DivArray = ["BSorDiv0","BSorDiv2","BSorDiv5","BSorDiv4","BSorDiv1"]
+    for(let i = 0; i < JatekosKartyaID.length;i++){
+        if(i < JatekosKartyaID.length){
+            for(let j = 0; j < JatekosKartyaID[i].length;j++){
+                document.getElementById(JatekosKartyaID[i][j]).removeChild(document.getElementById(JatekosKartyaID[i][j]).firstChild);
+            }
+        }
+        else{
+            for(let j = 0; i < DivArray.length;i++){
 
+            }
+        }
+    }
 }
