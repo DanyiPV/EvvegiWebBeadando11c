@@ -179,6 +179,7 @@ function ErtekMegjelenites(){ //A bal alsó chippek kigenerálása, és azok els
             ZsetonDiv1.appendChild(CoinDiv);
         }
     }
+    document.getElementById("ChipTablaNev").dataset.value = CoinErtek;
     Tabla.appendChild(ZsetonDiv1);
     Tabla.appendChild(ZsetonDiv2);
     
@@ -214,7 +215,6 @@ function ErtekKatt(ertek){ //Amelyik chipre kattintott, annak az értékét att�
         }
     }
     CoinErtek -= ertek;
-    document.getElementById("ChipTablaNev").dataset.value = CoinErtek;
     ErtekFrissites();
 }
 
@@ -374,7 +374,6 @@ function ChipsTabla(){ //A chip tábla kigenerálása, amibe a chipek kerülnek
     TablaNev.id = "ChipTablaNev";
     TablaNev.innerHTML = "<p>$"+CoinErtek+"</p>";
     Jatekter.appendChild(TablaNev);
-
 }
 
 function FelAll(){ //Az érték kiválasztó div lenyílására szolgáló func.
