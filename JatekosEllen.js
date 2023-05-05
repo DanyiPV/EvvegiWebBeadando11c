@@ -56,6 +56,7 @@ var KartyaIndexH = ["OLBDiv10","OLBDiv11","OLBDiv20","OLBDiv21","OLBDiv30","OLBD
 var JatekosKartyaID = [["OLBDiv10", "OLBDiv11","OLBDiv12","OLBDivErtek10"],[ "OLBDiv20", "OLBDiv21", "OLBDiv22","OLBDivErtek20"],
                        [ "OLBDiv30", "OLBDiv31", "OLBDiv32", "OLBDivErtek30"],[ "OLBDiv40", "OLBDiv41","OLBDiv42", "OLBDivErtek40"],
                        [ "OLBDiv50", "OLBDiv51", "OLBDiv52", "OLBDivErtek50"], ["OLBDivOszto0", "OLBDivOszto1","OLBDivOszto2", "OsztoDivErtek"]];
+var JatekosLapErtekek = ["OLBDivErtek10","OLBDivErtek30","OLBDivErtek50","OLBDivErtek40","OLBDivErtek20"];
 var KartyaKirakasSzamlalo = 0;
 var kevert = kartyaAdatok;
 var plr = 0;
@@ -72,7 +73,7 @@ function random(felso, also){
 }
 
 function Kever(){
-    for (let i = 0; i < (kevert.length)*15000; i++) {
+    for (let i = 0; i < (kevert.length)*150000; i++) {
         let r1 = random(0,kevert.length-1);
         let r2 = random(0,kevert.length-1);
         let c = kevert[r1];
@@ -202,7 +203,6 @@ function OsztoKartyaLerak(src, id, bool){
 
 function JatekKezdes(){
     let JatekosDivek = ["BSorDiv0","BSorDiv2","BSorDiv4","BSorDiv3","BSorDiv1"];
-    let JatekosLapErtekek = ["OLBDivErtek10","OLBDivErtek30","OLBDivErtek50","OLBDivErtek40","OLBDivErtek20"];
     if(!GombGen){
         JatekosGombDiv = document.createElement("div");
         JatekosGombDiv.id = "JatekosGombDiv";
@@ -275,9 +275,11 @@ function KartyaHuzas(divSzam,KartyaID){
 }
 
 function Tovabb(){
+    if(Number(document.getElementById(JatekosLapErtekek[plr]).dataset.value)<21){
+        document.getElementById(JatekosLapErtekek[plr]).classList.add("OsszEredmenyFeher");
+    }
     plr++;
     JatekKezdes();
-    
 }
 
 function JatekVege(){
@@ -293,9 +295,9 @@ function JatekVege(){
         document.getElementById("OsztoDivErtek").dataset.value = 21;
         document.getElementById("OsztoDivErtek").classList.add("OsszEredmenyNyert");
         OsztoMasodikKartya();
-
+        Leszamolas();
     }
-    setTimeout(Leszamolas,10000);
+    
     //UjKor();
 }
 
@@ -326,6 +328,9 @@ function OsztoKartyaHuzas(){
         KartyaHuzas("OLBDivOszto2",kevert[kevert.length-1].id);
         setTimeout(OsztoKartyaHuzas,2500);
     }
+    else{
+        Leszamolas();
+    }
     
 }
 
@@ -336,17 +341,26 @@ function Leszamolas(){
         let lapErtek = Number(document.getElementById("OLBDivErtek"+i+"0").firstChild.innerHTML);
         let coinString = document.getElementById("CoinErtek"+i+"1").firstChild.innerHTML.split("$");
         let coinErtek = Number(coinString[1]);
-        if(lapErtek>osztoErtek && lapErtek<=21)//ha 21 alatt vagy es osztonal tobb
-            ossz += coinErtek*2
+        if(lapErtek>osztoErtek && lapErtek<=21){//ha 21 alatt vagy es osztonal tobb
+            ossz += coinErtek*2;
+            document.getElementById("CoinErtek"+i+"1").classList.add("tetNyert");
+        }
 
-        if(lapErtek == osztoErtek)//ha dontetlen
-            ossz += coinErtek
+        else if(lapErtek == osztoErtek){//ha dontetlen
+            ossz += coinErtek;
+            document.getElementById("CoinErtek"+i+"1").classList.add("tetMarad");
+        }
 
-        if(osztoErtek>21 && lapErtek<=21) // ha oszto tullepi
-            ossz += coinErtek*2
+        else if(osztoErtek>21 && lapErtek<=21){ // ha oszto tullepi
+            ossz += coinErtek*2;
+            document.getElementById("CoinErtek"+i+"1").classList.add("tetNyert");
+        }
+        else{
+            document.getElementById("CoinErtek"+i+"1").classList.add("tetBukta");
+        }
     }
-    document.getElementById("ChipTablaNev").dataset.value = ossz;
-    let div = document.getElementById("ChipTablaNev").dataset.value
+    document.getElementById("ChipTablaNev").dataset.value = ossz + Number(document.getElementById("ChipTablaNev").dataset.value);
+    let div = document.getElementById("ChipTablaNev").dataset.value;
     document.getElementById("ChipTablaNev").firstChild.innerHTML = "<p>$"+String(div)+"</p>"
 }
 

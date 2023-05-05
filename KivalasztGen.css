@@ -520,6 +520,11 @@ body{
     box-shadow: 0 0 15px 8px red inset, 0 0 15px 8px red;
     background-color: rgba(0, 0, 0, 0.8) !important; 
 }
+.OsszEredmenyFeher{
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 13px 7px white inset, 0 0 10px 5px white;
+    background-color: rgba(0, 0, 0, 0.8) !important; 
+}
 
 .HuzasGomb{
     box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
@@ -573,7 +578,27 @@ body{
     box-shadow: 0 0 10px 0 rgb(0, 223, 0) inset, 0 0 10px 4px rgb(0, 223, 0);
     color: black;
 }
-
+.tetNyert{
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 12px 6px lime inset, 0 0 10px 5px lime;
+    background-color: rgba(0, 0, 0, 0.8) !important;  
+    border: 2px solid white;
+}
+.tetBukta{
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 12px 6px crimson inset, 0 0 10px 5px crimson;
+    background-color: rgba(0, 0, 0, 0.8) !important; 
+    border: 2px solid white;
+}
+.tetBukta p{
+    color: rgba(216, 22, 22);
+}
+.tetMarad{
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 12px 6px white inset, 0 0 10px 5px white;
+    background-color: rgba(0, 0, 0, 0.8) !important; 
+    border: 2px solid white;
+}
 @keyframes KartyaLerakAnim{
     from{margin-top: -2vw;}
     to{margin-top: 0}
