@@ -184,7 +184,7 @@ function ErtekKatt(ertek){ //Amelyik chipre kattintott, annak az értékét att�
     //console.log(Number(document.getElementById("CoinErtek11").dataset.value))+(ertek/5);
     InditoGombKiGen();
     KiirtSzovegEltuntet();
-    if(BotokEllen){ 
+    if(BotokEllen){
         let div = document.getElementById("CoinErtek51");
         div.dataset.value = Number(div.dataset.value)+ertek;
         div.innerHTML = "<p>$"+div.dataset.value+"</p>";
@@ -210,6 +210,7 @@ function ErtekKatt(ertek){ //Amelyik chipre kattintott, annak az értékét att�
         }
     }
     CoinErtek -= ertek;
+    document.getElementById("ChipTablaNev").dataset.value = CoinErtek;
     ErtekFrissites();
 }
 
