@@ -578,6 +578,12 @@ body{
     box-shadow: 0 0 10px 0 rgb(0, 223, 0) inset, 0 0 10px 4px rgb(0, 223, 0);
     color: black;
 }
+.GombEltuntet{
+    animation-name: LassuEltunteto !important;
+    animation-duration: .7s !important;
+    animation-fill-mode: forwards !important;
+}
+
 .tetNyert{
     transition: all .4s ease-in-out;
     box-shadow: 0 0 12px 6px lime inset, 0 0 10px 5px lime;
