@@ -106,13 +106,11 @@ function RaKatt(div){ //Amelyik divre kattintanak rá, arra teszi rá a megfelel
         Leteve = true;
     }
     if(div.dataset.value == "Botok Ellen"){
-        document.getElementById("JatekKiGenScript").src = "BotokEllen.js";
         let elemt = document.getElementById("JatekosEllen");
         BotokEllen = true;
         elemt.classList.remove("Kivalasztva");
     }
     else if(div.dataset.value == "Játékos Ellen"){
-        document.getElementById("JatekKiGenScript").src = "JatekosEllen.js";
         let elemt = document.getElementById("BotokEllen");
         BotokEllen = false;
         elemt.classList.remove("Kivalasztva");
@@ -121,6 +119,12 @@ function RaKatt(div){ //Amelyik divre kattintanak rá, arra teszi rá a megfelel
 }
 
 function KivalasztasVege(){ //Ha a gombra rálehet kattintani, akkor ezt a függvényt hívja meg, vissza állítja mindegyik értéknek az alap classlistjét(a későbbiek miatt)
+    if(BotokEllen){
+        document.getElementById("JatekKiGenScript").src = "BotokEllen.js";
+    }
+    else{
+        document.getElementById("JatekKiGenScript").src = "JatekosEllen.js";
+    }
     document.getElementById("BotokEllen").classList = "KivalasztotDesign";
     document.getElementById("JatekosEllen").classList = "KivalasztotDesign";
     for(let i = 0; i < document.getElementsByClassName("BelsoDivek").length;i++){
