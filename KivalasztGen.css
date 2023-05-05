@@ -472,7 +472,7 @@ body{
     width: fit-content;
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 43vw;
+    bottom: 3.5vw;
     right: 0;
 }
 #HuzasGomb, #MegallGomb{
