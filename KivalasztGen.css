@@ -153,6 +153,11 @@ body{
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
 }
+.FeketeHatterMegjelenito{
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+}
 .Lenyilas{
     top: 50% !important;
     left: 50% !important;
@@ -605,6 +610,113 @@ body{
     background-color: rgba(0, 0, 0, 0.8) !important; 
     border: 2px solid white;
 }
+
+#UjGombokDivTer{
+    width: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .5s ease-in-out;
+    z-index: 10;
+}
+.UjkorGombok{
+    border: 0;
+    margin: 1.5vw;
+    border-radius: 5px;
+    height: 8vw;
+    width: 16vw;
+    font-size: 2vw;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    box-shadow: 0 0 40px 100px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
+    transition: all .5s ease-in-out;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+}
+
+.UjkorGombok:hover{
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
+}
+#BefejezesDivTer>p{
+    color: white;
+    text-decoration: underline white;
+    text-align: center;
+    margin-top: 1vw;
+    font-size: 2vw;
+    transition: .7s;
+}
+#KorokSzamaDiv{
+    transition: 7s;
+}
+#KorokSzamaDiv p{
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+    margin: 2.5vw;
+    padding-top: 2.5vw;
+    border-top: 1px solid white;
+}
+#KiinduloErtekDiv{
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+    margin: 2.5vw;
+}
+#MostaniErtekDiv{
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+    margin: 2.5vw;
+}
+#VesztesegDiv{
+    color: red;
+    font-size: 1.5vw;
+    text-align: center;
+    margin: 2.5vw;
+    padding-bottom: 2vw;
+    border-bottom: 1px solid white;
+}
+#NyeresegDiv{
+    color: lime;
+    font-size: 1.5vw;
+    text-align: center;
+    margin: 2.5vw;
+    padding-bottom: 2vw;
+    border-bottom: 1px solid white;
+}
+#SemlegesDiv{
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+    margin: 2.5vw;
+    padding-bottom: 2vw;
+    border-bottom: 1px solid white;
+}
+#UjMecsInditasGomb{
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
+    color: white;
+    display: block;
+    margin: auto;
+    margin-top: 3vw !important;
+    border: 0;
+    border-radius: 15px;
+    width: 12vw;
+    height: 5vw;
+    cursor: pointer;
+    font-size: 1.5vw;
+    background-color: rgb(65, 65, 65);
+}
+
+#UjMecsInditasGomb:hover{
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
+    border-radius: 5px !important;
+}
+
 @keyframes KartyaLerakAnim{
     from{margin-top: -2vw;}
     to{margin-top: 0}

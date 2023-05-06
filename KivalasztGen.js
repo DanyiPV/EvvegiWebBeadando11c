@@ -131,16 +131,17 @@ function KivalasztasVege(){ //Ha a gombra rálehet kattintani, akkor ezt a függ
         document.getElementById("BDiv"+i).classList = "BelsoDivek";
     }
     document.getElementById("AlapDiv").classList = "AlapDiv";
+    document.getElementById("FeketeHatterDiv").classList = "FeketeHatter";
     document.getElementById("FeketeHatterDiv").classList += " FeketeHatterEltunteto";
     setTimeout(Felallitas,2000); //Késlelteti az érték kiválasztó div felcsúszását
 }
 
 function Felallitas(){ //Elsötétített hátteret törli és értéket ad a Chip táblának, vagyis egér ráhuzással fel lehet nyitni
-    document.body.removeChild(document.getElementById("FeketeHatterDiv"));
     if(BotokEllen){
         setTimeout(BotokErtekKiGen,400); //Ha a BotokEllen bool igaz, akkor itt hívja meg a Botok érték kigenerálást
     }
     ErtekBedobas();
+    ErtekFrissites();
 }
 
 function ErtekBedobas(){ //Kigenerálja a chipekket és a egy szöveget középre
