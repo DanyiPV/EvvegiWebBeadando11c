@@ -610,13 +610,13 @@ function UjMecsInditas(){
     document.getElementById("AlapDiv").removeChild(document.getElementById("GombDiv"));
     document.getElementById("ChipTablaNev").innerHTML = "<p>$0<p>";
     document.getElementById("ChipTablaNev").removeAttribute("data-value");
-    document.getElementById("JatekKiGenScript").removeAttribute("src");
     setTimeout(Felnyilas,700);
 }
 
 function Felnyilas(){
     document.getElementById("BefejezesDivTer").classList.remove("Lenyilas");
     setTimeout(RaadLenyilas,1200);
+    UjKorKivalasztGen();
 }
 
 function RaadLenyilas1(){

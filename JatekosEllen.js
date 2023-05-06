@@ -67,13 +67,12 @@ var GombGen = false;
 var jatekVege = false;
 var osztoBJ = false;
 
-
 function random(felso, also){
     return Math.floor(Math.random()*(felso-also+1)+also);
 }
 
 function Kever(){
-    for (let i = 0; i < (kevert.length)*150000; i++) {
+    for (let i = 0; i < kevert.length*150000; i++) {
         let r1 = random(0,kevert.length-1);
         let r2 = random(0,kevert.length-1);
         let c = kevert[r1];
@@ -83,10 +82,10 @@ function Kever(){
 }
 
 function general(){
+    ValtozoVisszaAllitas();
     Kever();
     Elrejtes();
     setTimeout(KartyaMegjelenites,800,KartyaIndexH[KartyaKirakasSzamlalo++], kevert[kevert.length-1].id);
-    
 }
 
 function Elrejtes(){
@@ -169,7 +168,7 @@ function KartyaOsszeg(){
         }
     }
     if(document.getElementById("OsztoDivErtek").dataset.value != undefined){
-        if(document.getElementById("OsztoDivErtek").dataset.value>0 && !osztoBJ){
+        if(document.getElementById("OsztoDivErtek").dataset.value >0 && !osztoBJ){
             JatekKezdes();
         }
     }
@@ -203,6 +202,7 @@ function OsztoKartyaLerak(src, id, bool){
 
 function JatekKezdes(){
     let JatekosDivek = ["BSorDiv0","BSorDiv2","BSorDiv4","BSorDiv3","BSorDiv1"];
+    console.log("belép");
     if(!GombGen){
         JatekosGombDiv = document.createElement("div");
         JatekosGombDiv.id = "JatekosGombDiv";
@@ -242,8 +242,6 @@ function JatekKezdes(){
             JatekVege();
         }
     }
-
-    
 }
 
 function Huzas(){
@@ -271,7 +269,6 @@ function KartyaHuzas(divSzam,KartyaID){
     div.appendChild(img);
     kevert.splice(kevert.indexOf(kevert.length-1),1)
     setTimeout(KartyaOsszeg,1200);
-    
 }
 
 function Tovabb(){
@@ -366,7 +363,6 @@ function Leszamolas(){
 
 function UjKor(){
     ValtozoVisszaAllitas();
-
     general();
 }
 

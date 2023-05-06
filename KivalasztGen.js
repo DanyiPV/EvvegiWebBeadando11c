@@ -383,6 +383,13 @@ function FelAll(){ //Az érték kiválasztó div lenyílására szolgáló func.
     //document.getElementById("OsszLapokDiv").classList = "TablaOldalraTolas";
 }
 
+function UjKorKivalasztGen(){
+    document.body.removeChild(document.getElementById("JatekKiGenScript"));
+    let script = document.createElement("script");
+    script.id = "JatekKiGenScript";
+    document.body.appendChild(script);
+}
+
 function Main(){
     AlapBeallaitasok();
     TablaKiGen();
