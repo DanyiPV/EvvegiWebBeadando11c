@@ -341,9 +341,10 @@ function Leszamolas(){
         if(lapErtek>osztoErtek && lapErtek<=21){//ha 21 alatt vagy es osztonal tobb
             ossz += coinErtek*2;
             document.getElementById("CoinErtek"+i+"1").classList.add("tetNyert");
+            document.getElementById("CoinErtek"+i+"1").firstChild.innerHTML = "<p>$"+String(coinErtek*2)+"</p>";
         }
 
-        else if(lapErtek == osztoErtek){//ha dontetlen
+        else if(lapErtek == osztoErtek && osztoErtek <22){//ha dontetlen
             ossz += coinErtek;
             document.getElementById("CoinErtek"+i+"1").classList.add("tetMarad");
         }
@@ -351,9 +352,11 @@ function Leszamolas(){
         else if(osztoErtek>21 && lapErtek<=21){ // ha oszto tullepi
             ossz += coinErtek*2;
             document.getElementById("CoinErtek"+i+"1").classList.add("tetNyert");
+            document.getElementById("CoinErtek"+i+"1").firstChild.innerHTML = "<p>$"+String(coinErtek*2)+"</p>";
         }
         else{
             document.getElementById("CoinErtek"+i+"1").classList.add("tetBukta");
+            document.getElementById("CoinErtek"+i+"1").firstChild.innerHTML = "<p>$0</p>";
         }
     }
     document.getElementById("ChipTablaNev").dataset.value = ossz + Number(document.getElementById("ChipTablaNev").dataset.value);
