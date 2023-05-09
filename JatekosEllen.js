@@ -412,52 +412,58 @@ function UjkorKezdes(){
     document.getElementById("FeketeHatterDiv").classList.add("FeketeHatterEltunteto");
 }
 
-// function Befejezes(){
-//     document.getElementById("FeketeHatterDiv").classList.add("FeketeHatterMegjelenito");
-//     Reset(false);
-//     let BefejezesDivTer = document.createElement("div");
-//     BefejezesDivTer.id = "BefejezesDivTer";
-//     BefejezesDivTer.classList = "AlapDiv";
-//     BefejezesDivTer.innerHTML = "<p>Értékelés</p>";
-//     Jatekter.appendChild(BefejezesDivTer);
-//     setTimeout(RaadLenyilas1,700);
-//     let KorokSzamaDiv = document.createElement("div");
-//     KorokSzamaDiv.id = "KorokSzamaDiv";
-//     KorokSzamaDiv.innerHTML = "<p>Lejátszott körök száma: "+KorSzamlalo+"</p>";
-//     BefejezesDivTer.appendChild(KorokSzamaDiv);
-//     let KiinduloErtekDiv = document.createElement("div");
-//     KiinduloErtekDiv.id = "KiinduloErtekDiv";
-//     KiinduloErtekDiv.innerHTML = "<p>Kiinduló összeg: "+TeljesCoinErtek+"</p>";
-//     BefejezesDivTer.appendChild(KiinduloErtekDiv);
-//     let MostaniErtekDiv = document.createElement("div");
-//     MostaniErtekDiv.innerHTML = "<p>Vég összeg: "+document.getElementById("ChipTablaNev").dataset.value+"</p>";
-//     MostaniErtekDiv.id = "MostaniErtekDiv";
-//     BefejezesDivTer.appendChild(MostaniErtekDiv);
-//     if((document.getElementById("ChipTablaNev").dataset.value-TeljesCoinErtek) < 0){
-//         let VesztesegDiv = document.createElement("div");
-//         VesztesegDiv.id = "VesztesegDiv";
-//         VesztesegDiv.innerHTML = "<p>Profit > Veszteség: "+(document.getElementById("ChipTablaNev").dataset.value-TeljesCoinErtek)+"</p>";
-//         BefejezesDivTer.appendChild(VesztesegDiv);
-//     }
-//     else if((document.getElementById("ChipTablaNev").dataset.value-TeljesCoinErtek) > 0){
-//         let NyeresegDiv = document.createElement("div");
-//         NyeresegDiv.id = "NyeresegDiv";
-//         NyeresegDiv.innerHTML = "<p>Profit > Nyereség: "+(document.getElementById("ChipTablaNev").dataset.value-TeljesCoinErtek)+"</p>";
-//         BefejezesDivTer.appendChild(NyeresegDiv);
-//     }
-//     else{
-//         let SemlegesDiv = document.createElement("div");
-//         SemlegesDiv.id = "SemlegesDiv";
-//         SemlegesDiv.innerHTML = "<p>Profit -> Az érték semmit se változott!</p>";
-//         BefejezesDivTer.appendChild(SemlegesDiv);
-//     }
-//     let UjMecsInditasGomb = document.createElement("input");
-//     UjMecsInditasGomb.type = "button";
-//     UjMecsInditasGomb.id = "UjMecsInditasGomb";
-//     UjMecsInditasGomb.value = "Új mecs";
-//     UjMecsInditasGomb.setAttribute("onclick","UjMecsInditas()");
-//     BefejezesDivTer.appendChild(UjMecsInditasGomb);
-// }
+function Befejezes(){
+    document.getElementById("FeketeHatterDiv").classList.add("FeketeHatterMegjelenito");
+    Reset(false);
+    if(document.getElementById("BefejezesDivTer") != undefined){
+        let BefejezesDivTer = document.getElementById("BefejezesDivTer");
+        BefejezesDivTer.innerHTML =  "";
+    }
+    else{
+        let BefejezesDivTer = document.createElement("div");
+        BefejezesDivTer.id = "BefejezesDivTer";
+        BefejezesDivTer.classList = "AlapDiv";
+        Jatekter.appendChild(BefejezesDivTer);
+    }
+    BefejezesDivTer.innerHTML = "<p>Értékelés</p>";
+    setTimeout(RaadLenyilas1,700);
+    let KorokSzamaDiv = document.createElement("div");
+    KorokSzamaDiv.id = "KorokSzamaDiv";
+    KorokSzamaDiv.innerHTML = "<p>Lejátszott körök száma: "+KorSzamlalo+"</p>";
+    BefejezesDivTer.appendChild(KorokSzamaDiv);
+    let KiinduloErtekDiv = document.createElement("div");
+    KiinduloErtekDiv.id = "KiinduloErtekDiv";
+    KiinduloErtekDiv.innerHTML = "<p>Kiinduló összeg: "+TeljesCoinErtek+"</p>";
+    BefejezesDivTer.appendChild(KiinduloErtekDiv);
+    let MostaniErtekDiv = document.createElement("div");
+    MostaniErtekDiv.innerHTML = "<p>Vég összeg: "+document.getElementById("ChipTablaNev").dataset.value+"</p>";
+    MostaniErtekDiv.id = "MostaniErtekDiv";
+    BefejezesDivTer.appendChild(MostaniErtekDiv);
+    if((document.getElementById("ChipTablaNev").dataset.value-TeljesCoinErtek) < 0){
+        let VesztesegDiv = document.createElement("div");
+        VesztesegDiv.id = "VesztesegDiv";
+        VesztesegDiv.innerHTML = "<p>Profit -> Veszteség: "+(document.getElementById("ChipTablaNev").dataset.value-TeljesCoinErtek)+"</p>";
+        BefejezesDivTer.appendChild(VesztesegDiv);
+    }
+    else if((document.getElementById("ChipTablaNev").dataset.value-TeljesCoinErtek) > 0){
+        let NyeresegDiv = document.createElement("div");
+        NyeresegDiv.id = "NyeresegDiv";
+        NyeresegDiv.innerHTML = "<p>Profit -> Nyereség: "+(document.getElementById("ChipTablaNev").dataset.value-TeljesCoinErtek)+"</p>";
+        BefejezesDivTer.appendChild(NyeresegDiv);
+    }
+    else{
+        let SemlegesDiv = document.createElement("div");
+        SemlegesDiv.id = "SemlegesDiv";
+        SemlegesDiv.innerHTML = "<p>Profit -> Az érték semmit se változott!</p>";
+        BefejezesDivTer.appendChild(SemlegesDiv);
+    }
+    let UjMecsInditasGomb = document.createElement("input");
+    UjMecsInditasGomb.type = "button";
+    UjMecsInditasGomb.id = "UjMecsInditasGomb";
+    UjMecsInditasGomb.value = "Új mecs";
+    UjMecsInditasGomb.setAttribute("onclick","UjMecsInditas()");
+    BefejezesDivTer.appendChild(UjMecsInditasGomb);
+}
 
 function Reset(ujkore){
     if(document.getElementById("UjkorGomb") != undefined && document.getElementById("BefejezeGomb") != undefined){
