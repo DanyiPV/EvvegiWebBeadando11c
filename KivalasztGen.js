@@ -156,6 +156,9 @@ function ErtekBedobas(){ //Kigenerálja a chipekket és a egy szöveget középr
 function ErtekMegjelenites(){ //A bal alsó chippek kigenerálása, és azok elszürkítése ha a kezdő érték kisebb mint a chip értéke
     let Tabla = document.getElementById("ChipTabla");
     let TablaNev = document.getElementById("ChipTablaNev");
+    if(TablaNev.dataset.value != undefined){
+        CoinErtek = Number(TablaNev.dataset.value);
+    }
     TablaNev.innerHTML = "<p>$"+CoinErtek+"</p>";
     let ZsetonDiv1 = document.createElement("div");
     let ZsetonDiv2 = document.createElement("div");
@@ -216,6 +219,7 @@ function ErtekKatt(ertek){ //Amelyik chipre kattintott, annak az értékét att�
         }
     }
     CoinErtek -= ertek;
+    document.getElementById("ChipTablaNev").dataset.value = CoinErtek;
     ErtekFrissites();
 }
 
