@@ -295,7 +295,6 @@ function JatekVege(){
         Leszamolas();
     }
     
-    //UjKor();
 }
 
 function OsztoMasodikKartya(){
@@ -362,11 +361,27 @@ function Leszamolas(){
     document.getElementById("ChipTablaNev").dataset.value = ossz + Number(document.getElementById("ChipTablaNev").dataset.value);
     let div = document.getElementById("ChipTablaNev").dataset.value;
     document.getElementById("ChipTablaNev").firstChild.innerHTML = "<p>$"+String(div)+"</p>"
+    setTimeout(UjKor,500);
 }
 
 function UjKor(){
+    if(document.getElementById("ChipTablaNev").dataset.value != 0){
+        setTimeout(UjkorGombok,2000);
+    }
+    else if(document.getElementById("ChipTablaNev").dataset.value == 0){
+        setTimeout(Befejezes,2000);
+    }
+    
     ValtozoVisszaAllitas();
-    general();
+    
+}
+
+function UjkorGombok(){
+
+}
+
+function Befejezes(){
+    
 }
 
 function ValtozoVisszaAllitas(){
