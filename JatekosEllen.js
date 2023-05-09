@@ -405,22 +405,10 @@ function UjkorGombok(){
 }
 
 function UjkorKezdes(){
-    ValtozoVisszaAllitas();
+    
     console.log("újkör");
 }
 
 function Befejezes(){
     console.log("befejzezés");
-}
-
-function ValtozoVisszaAllitas(){
-    KartyaKirakasSzamlalo = 0;
-    KeverArrayBepakol();
-    plr = 0;
-    JatekosGombDiv = undefined;
-    HuzasGomb = undefined;
-    MegallGomb = undefined;
-    GombGen = false;
-    jatekVege = false;
-    osztoBJ = false;
 }
