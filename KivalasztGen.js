@@ -239,7 +239,9 @@ function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a di
     if(BotokEllen){
         if(document.getElementById("InditoGomb") == undefined){
             document.getElementById("BelsoDiv0").dataset.kezdoertek = TeljesCoinErtek;
-            document.getElementById("BelsoDiv0").dataset.korszamlalo = 1;
+            if(document.getElementById("BelsoDiv0").dataset.korszamlalo == undefined){
+                document.getElementById("BelsoDiv0").dataset.korszamlalo = 1;
+            }
             let InditoGomb = document.createElement("input");
             InditoGomb.value = "Indítás";
             InditoGomb.type = "button";
