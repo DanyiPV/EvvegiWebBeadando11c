@@ -4,6 +4,7 @@ var CoinErtek = 0;
 var Lefutott = false;
 var BotokEllen = undefined;
 var TeljesCoinErtek = 0;
+var Jatekos;
 
 //Játéktér
 let Jatekter = document.createElement("div");
@@ -124,6 +125,7 @@ function KivalasztasVege(){ //Ha a gombra rálehet kattintani, akkor ezt a függ
     }
     else{
         document.getElementById("JatekKiGenScript").src = "JatekosEllen.js";
+        Jatekos = 1;
     }
     document.getElementById("BotokEllen").classList = "KivalasztotDesign";
     document.getElementById("JatekosEllen").classList = "KivalasztotDesign";
@@ -139,6 +141,9 @@ function KivalasztasVege(){ //Ha a gombra rálehet kattintani, akkor ezt a függ
 function Felallitas(){ //Elsötétített hátteret törli és értéket ad a Chip táblának, vagyis egér ráhuzással fel lehet nyitni
     if(BotokEllen){
         setTimeout(BotokErtekKiGen,400); //Ha a BotokEllen bool igaz, akkor itt hívja meg a Botok érték kigenerálást
+    }
+    else{
+        document.getElementById(ErtekDivArray[Jatekos-1]).firstChild.classList.add("StatusIndikatorBalAktiv");
     }
     ErtekBedobas();
     ErtekFrissites();
@@ -189,45 +194,33 @@ function ErtekMegjelenites(){ //A bal alsó chippek kigenerálása, és azok els
     
 }
 
+var ErtekDivArray = ["BSorDiv0","BSorDiv2","BSorDiv4","BSorDiv3","BSorDiv1"];
+
 function ErtekKatt(ertek){ //Amelyik chipre kattintott, annak az értékét attól függően hogy játékos vagy botok elleni a játék mód, úgy adja hozzá a megfelelő divhez
     //console.log(Number(document.getElementById("CoinErtek11").dataset.value))+(ertek/5);
-    InditoGombKiGen();
     KiirtSzovegEltuntet();
     if(BotokEllen){
         let div = document.getElementById("CoinErtek51");
         div.dataset.value = Number(div.dataset.value)+ertek;
         div.innerHTML = "<p>$"+div.dataset.value+"</p>";
     }else{
-        for(let i = 1;i<6;i++){
-            let div = document.getElementById("CoinErtek"+((i*10)+1));
-            let Ertek = String(Number(div.dataset.value)+(ertek/5));
-            var VegesSzam = "";
-            if(VaneBennePont(Ertek)){
-                VegesSzam = Ertek[0];
-                let index = 1;
-                while(index < Ertek.length && Ertek[index] != '.'){
-                    VegesSzam += Ertek[index++];
-                }
-                VegesSzam += '.';
-                VegesSzam += Ertek[index+1];
-            }
-            else{
-                VegesSzam = Number(div.dataset.value)+(ertek/5);
-            }
-            div.dataset.value = Number(VegesSzam);
-            div.innerHTML = "<p>$"+div.dataset.value+"</p>";
-        }
+        let CoinertekDivek = ["CoinErtek11","CoinErtek31","CoinErtek51","CoinErtek41","CoinErtek21"];
+        let div = document.getElementById(CoinertekDivek[Jatekos-1]);
+        div.dataset.value = Number(div.dataset.value)+ertek;
+        div.innerHTML = "<p>$"+div.dataset.value+"</p>";
     }
     CoinErtek -= ertek;
     document.getElementById("ChipTablaNev").dataset.value = CoinErtek;
     ErtekFrissites();
+    InditoGombKiGen();
 }
 
-function VaneBennePont(Ertek){ //Igaz hamis változó hogy a szám tört-e vagy sem
-    let i = 0;
-    while(i < Ertek.length && Ertek[i] != '.'){i++}
-    if(i < Ertek.length){return true}
-    else{return false}
+function StatuszIndikatorNullazas(){
+    for(let j = 0; j<5;j++){
+        if(document.getElementById(ErtekDivArray[j]).firstChild.classList.contains("StatusIndikatorBalAktiv")){
+            document.getElementById(ErtekDivArray[j]).firstChild.classList.remove("StatusIndikatorBalAktiv");
+        }
+    }
 }
 
 function ErtekFrissites(){ //Frissíti az érétket a chip táblában, az új érték alapján
@@ -243,14 +236,57 @@ function KiirtSzovegEltuntet(){
 }
 
 function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a divekhez hozzáadódnak, kigenerálja a gombot, azt veszi figyelembe hogy önmaga ki van-e generálva
-    if(document.getElementById("InditoGomb") == undefined){
+    if(BotokEllen){
+        if(document.getElementById("InditoGomb") == undefined){
+            let InditoGomb = document.createElement("input");
+            InditoGomb.value = "Indítás";
+            InditoGomb.type = "button";
+            InditoGomb.id = "InditoGomb";
+            InditoGomb.classList = "InditoGomb";
+            InditoGomb.setAttribute("onclick","general()");
+            Jatekter.appendChild(InditoGomb);
+        }
+    }
+    else{
+        if(document.getElementById("InditoGomb") == undefined){
+            if(Jatekos==5 || CoinErtek==0){
+                let InditoGomb = document.createElement("input");
+                InditoGomb.value = "Indítás";
+                InditoGomb.type = "button";
+                InditoGomb.id = "InditoGomb";
+                InditoGomb.classList = "InditoGomb";
+                InditoGomb.setAttribute("onclick","general()");
+                Jatekter.appendChild(InditoGomb);
+            }
+            else{
+                let InditoGomb = document.createElement("input");
+                InditoGomb.value = "Következő";
+                InditoGomb.type = "button";
+                InditoGomb.id = "InditoGomb";
+                InditoGomb.classList = "InditoGomb";
+                InditoGomb.setAttribute("onclick","KovetkezoTetMegadas()");
+                Jatekter.appendChild(InditoGomb);
+            }
+        }
+    }
+}
+
+function KovetkezoTetMegadas(){
+    Jatekos++;
+    StatuszIndikatorNullazas();
+    let InditoGomb = document.getElementById("InditoGomb");
+    Jatekter.removeChild(InditoGomb);
+    if(CoinErtek!=0){
+        document.getElementById(ErtekDivArray[Jatekos-1]).firstChild.classList.add("StatusIndikatorBalAktiv");
+    }
+    else{
         let InditoGomb = document.createElement("input");
-        InditoGomb.value = "Indítás";
-        InditoGomb.type = "button";
-        InditoGomb.id = "InditoGomb";
-        InditoGomb.classList = "InditoGomb";
-        InditoGomb.setAttribute("onclick","general()");
-        Jatekter.appendChild(InditoGomb);
+                InditoGomb.value = "Indítás";
+                InditoGomb.type = "button";
+                InditoGomb.id = "InditoGomb";
+                InditoGomb.classList = "InditoGomb";
+                InditoGomb.setAttribute("onclick","general()");
+                Jatekter.appendChild(InditoGomb);
     }
 }
 
