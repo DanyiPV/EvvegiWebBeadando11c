@@ -98,7 +98,6 @@ var kartyaAdatok = [
         StatuszIndikatorNullazas();
         KeverArrayBepakol();
         Elrejtes();
-        Jatekter.removeChild(document.getElementById("InditoGomb"));
         setTimeout(KartyaMegjelenites,800,KartyaIndexH[KartyaKirakasSzamlalo++], kevert[kevert.length-1].id);
     }
     
@@ -106,6 +105,12 @@ var kartyaAdatok = [
         if(document.getElementById("InditoGomb") != undefined){
             document.getElementById("InditoGomb").classList = "InditoGombEltuntet";
             document.getElementById("InditoGomb").removeAttribute("onclick","general()");
+            Jatekter.removeChild(document.getElementById("InditoGomb"));
+        }
+        if(document.getElementById("KovGomb") != undefined){
+            document.getElementById("KovGomb").classList = "KovGombEltuntet";
+            document.getElementById("KovGomb").removeAttribute("onclick","KovetkezoTetMegadas()");
+            Jatekter.removeChild(document.getElementById("KovGomb"));
         }
         document.getElementById("ChipTabla").classList.remove("TablaFelnyilas");
         document.getElementById("ChipTablaNev").classList.remove("NevFelnyilas");
@@ -512,6 +517,9 @@ var kartyaAdatok = [
         let EredmenyCDivek = document.getElementsByClassName("CoinErtek");
         for(let i = 0; i < ErtekDivArray.length;i++){
             document.getElementById(ErtekDivArray[i]).firstChild.classList = "StatusIndikatorBal";
+        }
+        if(ujkore){
+            document.getElementById(ErtekDivArray[0]).firstChild.classList.add("StatusIndikatorBalAktiv");
         }
         for(let i = 0 ; i < EredmenyBDivek.length;i++){
             EredmenyBDivek[i].classList = "OLBDivErtek";

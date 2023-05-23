@@ -195,6 +195,7 @@ function ErtekMegjelenites(){ //A bal alsó chippek kigenerálása, és azok els
 }
 
 var ErtekDivArray = ["BSorDiv0","BSorDiv2","BSorDiv4","BSorDiv3","BSorDiv1"];
+var CoinertekDivek = ["CoinErtek11","CoinErtek31","CoinErtek51","CoinErtek41","CoinErtek21"];
 
 function ErtekKatt(ertek){ //Amelyik chipre kattintott, annak az értékét attól függően hogy játékos vagy botok elleni a játék mód, úgy adja hozzá a megfelelő divhez
     //console.log(Number(document.getElementById("CoinErtek11").dataset.value))+(ertek/5);
@@ -204,7 +205,6 @@ function ErtekKatt(ertek){ //Amelyik chipre kattintott, annak az értékét att�
         div.dataset.value = Number(div.dataset.value)+ertek;
         div.innerHTML = "<p>$"+div.dataset.value+"</p>";
     }else{
-        let CoinertekDivek = ["CoinErtek11","CoinErtek31","CoinErtek51","CoinErtek41","CoinErtek21"];
         let div = document.getElementById(CoinertekDivek[Jatekos-1]);
         div.dataset.value = Number(div.dataset.value)+ertek;
         div.innerHTML = "<p>$"+div.dataset.value+"</p>";
@@ -248,25 +248,29 @@ function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a di
         }
     }
     else{
-        if(document.getElementById("InditoGomb") == undefined){
-            if(Jatekos==5 || CoinErtek==0){
-                let InditoGomb = document.createElement("input");
-                InditoGomb.value = "Indítás";
-                InditoGomb.type = "button";
-                InditoGomb.id = "InditoGomb";
-                InditoGomb.classList = "InditoGomb";
-                InditoGomb.setAttribute("onclick","general()");
-                Jatekter.appendChild(InditoGomb);
-            }
-            else{
-                let InditoGomb = document.createElement("input");
-                InditoGomb.value = "Következő";
-                InditoGomb.type = "button";
-                InditoGomb.id = "InditoGomb";
-                InditoGomb.classList = "InditoGomb";
-                InditoGomb.setAttribute("onclick","KovetkezoTetMegadas()");
-                Jatekter.appendChild(InditoGomb);
-            }
+        if(CoinErtek==0 && document.getElementById("KovGomb") != undefined){
+            document.getElementById("KovGomb").classList = "KovGombEltuntet";
+            document.getElementById("KovGomb").removeAttribute("onclick","KovetkezoTetMegadas()");
+            Jatekter.removeChild(document.getElementById("KovGomb"));
+        }
+        if(Number(document.getElementById("CoinErtek11").dataset.value)!=0 && document.getElementById("InditoGomb") == undefined){
+            let InditoGomb = document.createElement("input");
+            InditoGomb.value = "Indítás";
+            InditoGomb.type = "button";
+            InditoGomb.id = "InditoGomb";
+            InditoGomb.classList = "InditoGomb";
+            InditoGomb.setAttribute("onclick","general()");
+            Jatekter.appendChild(InditoGomb);
+        }
+        if(Number(document.getElementById(CoinertekDivek[Jatekos-1]).dataset.value)!=0 && document.getElementById("KovGomb") == undefined && CoinErtek>0){
+            console.log("sasdsa")
+            let KovGomb = document.createElement("input");
+            KovGomb.value = "Következő";
+            KovGomb.type = "button";
+            KovGomb.id = "KovGomb";
+            KovGomb.classList = "KovGomb";
+            KovGomb.setAttribute("onclick","KovetkezoTetMegadas()");
+            Jatekter.appendChild(KovGomb);
         }
     }
 }
@@ -274,19 +278,11 @@ function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a di
 function KovetkezoTetMegadas(){
     Jatekos++;
     StatuszIndikatorNullazas();
-    let InditoGomb = document.getElementById("InditoGomb");
-    Jatekter.removeChild(InditoGomb);
+    document.getElementById("KovGomb").classList = "KovGombEltuntet";
+    document.getElementById("KovGomb").removeAttribute("onclick","KovetkezoTetMegadas()");
+    Jatekter.removeChild(document.getElementById("KovGomb"));
     if(CoinErtek!=0){
         document.getElementById(ErtekDivArray[Jatekos-1]).firstChild.classList.add("StatusIndikatorBalAktiv");
-    }
-    else{
-        let InditoGomb = document.createElement("input");
-                InditoGomb.value = "Indítás";
-                InditoGomb.type = "button";
-                InditoGomb.id = "InditoGomb";
-                InditoGomb.classList = "InditoGomb";
-                InditoGomb.setAttribute("onclick","general()");
-                Jatekter.appendChild(InditoGomb);
     }
 }
 

@@ -394,6 +394,49 @@ body{
     animation-fill-mode: forwards;
 }
 
+
+.KovGomb{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12vw;
+    height: 4vw;
+    border-radius: 25px;
+    border: 0;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
+    background-color: rgb(43, 43, 43);
+    color: white;
+    font-size: 1vw;
+    cursor: pointer;
+    animation-name: LassuMegjelenito;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+}
+.KovGomb:hover{
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgb(0, 102, 255) inset, 0 0 10px 4px rgb(0, 102, 255);
+}
+.KovGombEltuntet{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12vw;
+    height: 4vw;
+    border-radius: 25px;
+    border: 0;
+    transition: all .4s ease-in-out;
+    box-shadow: 0 0 40px 40px rgb(0, 102, 255) inset, 0 0 0 0 rgb(0, 102, 255);
+    background-color: rgb(43, 43, 43);
+    color: white;
+    font-size: 1vw;
+    animation-name: LassuEltunteto;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+}
+
 .CoinDiv{
     width: 5vw;
     height: 5vw;
