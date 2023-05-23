@@ -238,6 +238,7 @@ function KiirtSzovegEltuntet(){
 function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a divekhez hozzáadódnak, kigenerálja a gombot, azt veszi figyelembe hogy önmaga ki van-e generálva
     if(BotokEllen){
         if(document.getElementById("InditoGomb") == undefined){
+            document.getElementById("BelsoDiv0").dataset.kezdoertek = TeljesCoinErtek;
             let InditoGomb = document.createElement("input");
             InditoGomb.value = "Indítás";
             InditoGomb.type = "button";

@@ -199,12 +199,20 @@ function KartyaOsszeg2(DivId){
         }
     }
     else{
+        KartyaFelFordit();
         document.getElementById(DivId[DivId.length-1].id).firstChild.innerHTML = "<p>21</p>";
         document.getElementById(DivId[DivId.length-1].id).dataset.value = 21;
         JatekVeg += 1;
         ErtekDIsplay("oszto");
         Leszamolas();
     }
+}
+
+function KartyaFelFordit(){
+    let kepid = document.getElementById("OLBDivOszto1").firstChild.dataset.kepid;
+    let value = document.getElementById("OLBDivOszto1").firstChild.dataset.value;
+    document.getElementById("OLBDivOszto1").removeChild(document.getElementById("OLBDivOszto1").firstChild);
+    KepKiGen(document.getElementById("OLBDivOszto1"),kepid,value);
 }
 
 function OsztoOsszeg(DivId){
@@ -533,16 +541,16 @@ function Befejezes(){
     MostaniErtekDiv.innerHTML = "<p>Vég összeg: "+document.getElementById("ChipTablaNev").dataset.value+"</p>";
     MostaniErtekDiv.id = "MostaniErtekDiv";
     BefejezesDivTer.appendChild(MostaniErtekDiv);
-    if(VegOsszeg-TeljesCoinErtek < 0){
+    if(VegOsszeg-Number(document.getElementById("BelsoDiv0").dataset.kezdoertek) < 0){
         let VesztesegDiv = document.createElement("div");
         VesztesegDiv.id = "VesztesegDiv";
-        VesztesegDiv.innerHTML = "<p>Profit -> Veszteség: "+(VegOsszeg-TeljesCoinErtek)+"</p>";
+        VesztesegDiv.innerHTML = "<p>Veszteség: "+(VegOsszeg-Number(document.getElementById("BelsoDiv0").dataset.kezdoertek))+"</p>";
         BefejezesDivTer.appendChild(VesztesegDiv);
     }
-    else if(VegOsszeg-TeljesCoinErtek > 0){
+    else if(VegOsszeg-Number(document.getElementById("BelsoDiv0").dataset.kezdoertek) > 0){
         let NyeresegDiv = document.createElement("div");
         NyeresegDiv.id = "NyeresegDiv";
-        NyeresegDiv.innerHTML = "<p>Profit -> Nyereség: "+(VegOsszeg-TeljesCoinErtek)+"</p>";
+        NyeresegDiv.innerHTML = "<p>Nyereség: "+(VegOsszeg-Number(document.getElementById("BelsoDiv0").dataset.kezdoertek))+"</p>";
         BefejezesDivTer.appendChild(NyeresegDiv);
     }
     else{
