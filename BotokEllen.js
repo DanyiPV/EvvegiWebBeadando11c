@@ -209,9 +209,8 @@ function OsztoOsszeg(DivId){
     if(DivId == JatekosKartyaID[5]){
         var osszeg = 0;
         for(let i = 0; i < DivId.length-1;i++){
+            var NezettDiv = document.getElementById(DivId[i]).firstChild;
             if(NezettDiv != undefined){
-                var NezettDiv = document.getElementById(DivId[i]).firstChild;
-                console.log(NezettDiv.dataset.value);
                 if(NezettDiv.dataset.value != "Ász"){
                     osszeg += Number(NezettDiv.dataset.value);
                 }
@@ -377,7 +376,6 @@ function ErtekDIsplay(divid){
         }
     }
     else if(divid == "oszto"){
-        console.log(divid);
         let OsztoErtekDiv = document.getElementById("OsztoDivErtek");
         if(OsztoErtekDiv.dataset.value > 21){
             document.getElementById("OsztoDivErtek").classList += " OsszEredmenyNemNyert";
@@ -406,13 +404,12 @@ function ErtekDIsplay(divid){
 }
 
 function Leszamolas(){
-    let ertek = Number(document.getElementById("OLBDivErtek50").dataset.value);
-    let coinErtek = Number(document.getElementById("CoinErtek51").dataset.value);
-    if(ertek == 21){
-        CoinErtek = Number(document.getElementById("ChipTablaNev").dataset.value) + 2 * coinErtek;
+    let coinErtek = document.getElementById("CoinErtek51");
+    if(coinErtek.classList == "CoinErtek OsszEredmenyNyert"){
+        document.getElementById("ChipTablaNev").dataset.value = Number(document.getElementById("ChipTablaNev").dataset.value) + 2 * Number(coinErtek.dataset.value);
     }
-    else if(ertek == Number(document.getElementById("OsztoDivErtek").dataset.value)){
-        CoinErtek = Number(document.getElementById("ChipTablaNev").dataset.value) + coinErtek;
+    else if(coinErtek.classList == "CoinErtek OsszEredmenyFeher"){
+        document.getElementById("ChipTablaNev").dataset.value = Number(document.getElementById("ChipTablaNev").dataset.value) + Number(coinErtek.dataset.value);
     }
     ErtekMegjelenites();
     if(document.getElementById("ChipTablaNev").dataset.value != 0){
@@ -474,7 +471,7 @@ function Reset(ujkore){
     }
     let EredmenyBDivek = document.getElementsByClassName("OLBDivErtek");
     let EredmenyCDivek = document.getElementsByClassName("CoinErtek");
-    for(let i = 0; i < JatekosKartyaID.length;i++){
+    for(let i = 0; i < JatekosKartyaID.length-1;i++){
         document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1].value).firstChild.classList = "StatusIndikatorBal";
         document.getElementById(JatekosKartyaID[i][JatekosKartyaID[i].length-1].value).removeAttribute("data-difficulty");
     }
@@ -489,7 +486,8 @@ function Reset(ujkore){
         EredmenyCDivek[i].innerHTML = "<p>$0</p>";
     }
     JatekosLepteto = 0;
-    KartyaKirakasSzamlalo = 0;
+    KartyaKulsoLepteto = 0;
+    KartyaBelsoLepteto = 0;
     if(ujkore){
         BotokErtekKiGen();
     }
@@ -574,7 +572,7 @@ function BotIQ(divid,dif){
             }
             KepKiGen(document.getElementById(divid[2]));
             KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
-            setTimeout(BotIQ,2000,divid,dif);
+            setTimeout(BotIQ,1500,divid,dif);
         }
         else{
             BotIQ(divid,"vege");
@@ -587,7 +585,7 @@ function BotIQ(divid,dif){
             }
             KepKiGen(document.getElementById(divid[2]));
             KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
-            setTimeout(BotIQ,2000,divid,dif);
+            setTimeout(BotIQ,1200,divid,dif);
         }
         else if(document.getElementById(ertek).dataset.value > 12 && document.getElementById(ertek).dataset.value < 17){
             let random = Math.floor(Math.random()*100+1);
@@ -596,9 +594,9 @@ function BotIQ(divid,dif){
                     document.getElementById(divid[2]).removeChild(document.getElementById(divid[2]).firstChild);
                 }
                 KepKiGen(document.getElementById(divid[2]));
+                KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
             }
-            KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
-            setTimeout(BotIQ,2000,divid,dif);
+            setTimeout(BotIQ,1200,divid,dif);
         }
         else{
             BotIQ(divid,"vege");
@@ -608,10 +606,10 @@ function BotIQ(divid,dif){
         if(11 > document.getElementById(ertek).dataset.value){
             if(document.getElementById(divid[2]).firstChild != undefined){
                 document.getElementById(divid[2]).removeChild(document.getElementById(divid[2]).firstChild);
-                KepKiGen(document.getElementById(divid[2]));
             }
+            KepKiGen(document.getElementById(divid[2]));
             KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
-            setTimeout(BotIQ,2000,divid,dif);
+            setTimeout(BotIQ,1500,divid,dif);
         }
         else if(document.getElementById(ertek).dataset.value > 11 && document.getElementById(ertek).dataset.value < 15){
             let random = Math.floor(Math.random()*100+1);
@@ -622,7 +620,7 @@ function BotIQ(divid,dif){
                 KepKiGen(document.getElementById(divid[2]));
                 KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
             }
-            setTimeout(BotIQ,2000,divid,dif);
+            setTimeout(BotIQ,1000,divid,dif);
         }
         else{
             BotIQ(divid,"vege");
@@ -635,7 +633,7 @@ function BotIQ(divid,dif){
             }
             KepKiGen(document.getElementById(divid[2]));
             KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
-            setTimeout(BotIQ,2000,divid,dif);
+            setTimeout(BotIQ,600,divid,dif);
         }
         else if(document.getElementById(ertek).dataset.value > 11 && document.getElementById(ertek).dataset.value < 16){
             let random = Math.floor(Math.random()*100+1);
@@ -646,7 +644,7 @@ function BotIQ(divid,dif){
                 KepKiGen(document.getElementById(divid[2]));
                 KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
             }
-            setTimeout(BotIQ,2000,divid,dif);
+            setTimeout(BotIQ,600,divid,dif);
         }
         else{
             BotIQ(divid,"vege");
@@ -661,8 +659,5 @@ function BotIQ(divid,dif){
     else if(JatekosLepteto == 5 && dif == "vege"){
         ErtekDIsplay("oszto");
         Leszamolas();
-    }
-    else{
-        setTimeout(BotIQ,2000,divid,dif);
     }
 }
