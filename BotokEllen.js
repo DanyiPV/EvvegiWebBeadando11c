@@ -60,7 +60,6 @@ var JatekosKartyaID = [ ["OLBDiv10", "OLBDiv11", "OLBDiv12", {id:"OLBDivErtek10"
                         ["OLBDiv50", "OLBDiv51", "OLBDiv52", {id: "OLBDivErtek50", value: "BSorDiv4"}], ["OLBDiv40", "OLBDiv41","OLBDiv42", {id: "OLBDivErtek40", value: "BSorDiv3"}],
                         ["OLBDiv20", "OLBDiv21", "OLBDiv22", {id: "OLBDivErtek20", value: "BSorDiv1"}], ["OLBDivOszto0", "OLBDivOszto1","OLBDivOszto2", {id: "OsztoDivErtek", value: "OsztoDiv"}]];
 var JatekosLepteto = 0;
-var KorSzamlalo = 1;
 var VegOsszeg = 0;
 var JatekVeg = false;
 
@@ -466,7 +465,7 @@ function UjkorGombok(){
 }
 
 function Ujkor(){
-    KorSzamlalo++;
+    document.getElementById("BelsoDiv0").dataset.korszamlalo = Number(document.getElementById("BelsoDiv0").dataset.korszamlalo) + 1;
     setTimeout(Reset,700,true);
     document.getElementById("FeketeHatterDiv").classList.remove("FeketeHatterMegjelenito");
     document.getElementById("FeketeHatterDiv").classList.add("FeketeHatterEltunteto");
@@ -530,11 +529,11 @@ function Befejezes(){
     setTimeout(RaadLenyilas1,700);
     let KorokSzamaDiv = document.createElement("div");
     KorokSzamaDiv.id = "KorokSzamaDiv";
-    KorokSzamaDiv.innerHTML = "<p>Lejátszott körök száma: "+KorSzamlalo+"</p>";
+    KorokSzamaDiv.innerHTML = "<p>Lejátszott körök száma: "+document.getElementById("BelsoDiv0").dataset.korszamlalo+"</p>";
     BefejezesDivTer.appendChild(KorokSzamaDiv);
     let KiinduloErtekDiv = document.createElement("div");
     KiinduloErtekDiv.id = "KiinduloErtekDiv";
-    KiinduloErtekDiv.innerHTML = "<p>Kiinduló összeg: "+TeljesCoinErtek+"</p>";
+    KiinduloErtekDiv.innerHTML = "<p>Kiinduló összeg: "+Number(document.getElementById("BelsoDiv0").dataset.kezdoertek)+"</p>";
     BefejezesDivTer.appendChild(KiinduloErtekDiv);
     let MostaniErtekDiv = document.createElement("div");
     MostaniErtekDiv.innerHTML = "<p>Vég összeg: "+document.getElementById("ChipTablaNev").dataset.value+"</p>";
@@ -567,7 +566,7 @@ function Befejezes(){
 }
 
 function UjMecsInditas(){
-    KorSzamlalo = 1;
+    document.getElementById("BelsoDiv0").dataset.korszamlalo = 1;
     Leteve = false;
     Lefutott = false;
     document.getElementById("AlapDiv").removeChild(document.getElementById("ErtekDivTer"));
