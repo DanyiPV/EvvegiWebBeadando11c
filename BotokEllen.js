@@ -433,7 +433,6 @@ function Leszamolas(){
             document.getElementById("ChipTablaNev").dataset.value = Number(document.getElementById("ChipTablaNev").dataset.value) + Number(coinErtek.dataset.value);
         }
         VegOsszeg = Number(document.getElementById("ChipTablaNev").dataset.value);
-        console.log(VegOsszeg);
         ErtekMegjelenites();
         if(document.getElementById("ChipTablaNev").dataset.value != 0){
             setTimeout(UjkorGombok,2000);
