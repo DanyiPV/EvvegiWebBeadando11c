@@ -536,13 +536,13 @@ function Befejezes(){
     if(VegOsszeg-TeljesCoinErtek < 0){
         let VesztesegDiv = document.createElement("div");
         VesztesegDiv.id = "VesztesegDiv";
-        VesztesegDiv.innerHTML = "<p>Profit -> Veszteség: "+VegOsszeg-TeljesCoinErtek+"</p>";
+        VesztesegDiv.innerHTML = "<p>Profit -> Veszteség: "+(VegOsszeg-TeljesCoinErtek)+"</p>";
         BefejezesDivTer.appendChild(VesztesegDiv);
     }
     else if(VegOsszeg-TeljesCoinErtek > 0){
         let NyeresegDiv = document.createElement("div");
         NyeresegDiv.id = "NyeresegDiv";
-        NyeresegDiv.innerHTML = "<p>Profit -> Nyereség: "+VegOsszeg-TeljesCoinErtek+"</p>";
+        NyeresegDiv.innerHTML = "<p>Profit -> Nyereség: "+(VegOsszeg-TeljesCoinErtek)+"</p>";
         BefejezesDivTer.appendChild(NyeresegDiv);
     }
     else{
