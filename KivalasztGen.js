@@ -263,7 +263,6 @@ function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a di
             Jatekter.appendChild(InditoGomb);
         }
         if(Number(document.getElementById(CoinertekDivek[Jatekos-1]).dataset.value)!=0 && document.getElementById("KovGomb") == undefined && CoinErtek>0){
-            console.log("sasdsa")
             let KovGomb = document.createElement("input");
             KovGomb.value = "Következő";
             KovGomb.type = "button";
