@@ -614,7 +614,7 @@ function BotIQ(divid,dif){
             KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
             setTimeout(BotIQ,1200,divid,dif);
         }
-        else if(document.getElementById(ertek).dataset.value > 12 && document.getElementById(ertek).dataset.value < 17){
+        else if(document.getElementById(ertek).dataset.value > 11 && document.getElementById(ertek).dataset.value < 17){
             let random = Math.floor(Math.random()*100+1);
             if(random < 71){
                 if(document.getElementById(divid[2]).firstChild != undefined){
@@ -662,7 +662,7 @@ function BotIQ(divid,dif){
             KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
             setTimeout(BotIQ,600,divid,dif);
         }
-        else if(document.getElementById(ertek).dataset.value > 11 && document.getElementById(ertek).dataset.value < 16){
+        else if(document.getElementById(ertek).dataset.value > 11 && document.getElementById(ertek).dataset.value < 15){
             let random = Math.floor(Math.random()*100+1);
             if(random < 21){
                 if(document.getElementById(divid[2]).firstChild != undefined){
