@@ -408,8 +408,12 @@ function ErtekDIsplay(divid){
         let EredmenyBDivek = document.getElementsByClassName("OLBDivErtek");
         let EredmenyCDivek = document.getElementsByClassName("CoinErtek");
         for(let i = 0; i < EredmenyBDivek.length-1;i++){
-            if((Number(document.getElementById("OsztoDivErtek").dataset.value) < 21 && Number(EredmenyBDivek[i].dataset.value) < 21 && Number(EredmenyBDivek[i].dataset.value) > Number(document.getElementById("OsztoDivErtek").dataset.value)) 
-            || Number(EredmenyBDivek[i].dataset.value) == Number(document.getElementById("OsztoDivErtek").dataset.value)){
+            if((Number(document.getElementById("OsztoDivErtek").dataset.value) > 21 && Number(EredmenyBDivek[i].dataset.value) < 21) && Number(document.getElementById("OsztoDivErtek").dataset.value) != 21){
+                document.getElementById(EredmenyCDivek[i].id).classList = "CoinErtek tetNyert";
+                document.getElementById(EredmenyBDivek[i].id).classList = "OLBDivErtek OsszEredmenyNyert";
+            }
+            else if((Number(document.getElementById("OsztoDivErtek").dataset.value) < 21 && Number(EredmenyBDivek[i].dataset.value) < 21 && Number(EredmenyBDivek[i].dataset.value) > Number(document.getElementById("OsztoDivErtek").dataset.value)) 
+            || Number(EredmenyBDivek[i].dataset.value) == Number(document.getElementById("OsztoDivErtek").dataset.value) && Number(document.getElementById("OsztoDivErtek").dataset.value) != 21){
                 document.getElementById(EredmenyCDivek[i].id).classList = "CoinErtek tetMarad";
                 document.getElementById(EredmenyBDivek[i].id).classList = "OLBDivErtek OsszEredmenyFeher";
             }
