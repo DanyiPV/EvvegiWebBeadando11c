@@ -435,13 +435,13 @@ function Leszamolas(){
         else if(coinErtek.classList == "CoinErtek tetMarad"){
             document.getElementById("ChipTablaNev").dataset.value = Number(document.getElementById("ChipTablaNev").dataset.value) + Number(coinErtek.dataset.value);
         }
-        VegOsszeg = Number(document.getElementById("ChipTablaNev").dataset.value);
         ErtekMegjelenites();
+        VegOsszeg = Number(document.getElementById("ChipTablaNev").dataset.value);
         if(document.getElementById("ChipTablaNev").dataset.value != 0){
             setTimeout(UjkorGombok,2000);
         }
         else if(document.getElementById("ChipTablaNev").dataset.value == 0){
-            setTimeout(Befejezes,2000);
+            setTimeout(Befejezes2,2000);
         }
     }
 }
@@ -461,7 +461,7 @@ function UjkorGombok(){
     BefejezeGomb.type = "button";
     BefejezeGomb.id = "BefejezeGomb";
     BefejezeGomb.value = "Befejezés";
-    BefejezeGomb.setAttribute("onclick","setTimeout(Befejezes,700)");
+    BefejezeGomb.setAttribute("onclick","setTimeout(Befejezes2,700)");
     BefejezeGomb.classList = "UjkorGombok";
     UjGombokDivTer.appendChild(UjkorGomb);
     UjGombokDivTer.appendChild(BefejezeGomb);
@@ -522,9 +522,13 @@ function Reset(ujkore){
     ErtekFrissites();
 }
 
-function Befejezes(){
+function Befejezes2(){
     document.getElementById("FeketeHatterDiv").classList.add("FeketeHatterMegjelenito");
     Reset(false);
+    let korszamlalo = Number(document.getElementById("BelsoDiv0").dataset.korszamlalo);
+    let kiinduloertek = Number(document.getElementById("BelsoDiv0").dataset.kezdoertek);
+    let mostaniertek = Number(document.getElementById("ChipTablaNev").dataset.value);
+    console.log(korszamlalo,kiinduloertek,mostaniertek);
     let BefejezesDivTer = document.createElement("div");
     BefejezesDivTer.id = "BefejezesDivTer";
     BefejezesDivTer.classList = "AlapDiv";
@@ -533,32 +537,32 @@ function Befejezes(){
     setTimeout(RaadLenyilas1,700);
     let KorokSzamaDiv = document.createElement("div");
     KorokSzamaDiv.id = "KorokSzamaDiv";
-    KorokSzamaDiv.innerHTML = "<p>Lejátszott körök száma: "+document.getElementById("BelsoDiv0").dataset.korszamlalo+"</p>";
+    KorokSzamaDiv.innerHTML = "<p>Lejátszott körök száma: "+korszamlalo+"</p>";
     BefejezesDivTer.appendChild(KorokSzamaDiv);
     let KiinduloErtekDiv = document.createElement("div");
     KiinduloErtekDiv.id = "KiinduloErtekDiv";
-    KiinduloErtekDiv.innerHTML = "<p>Kiinduló összeg: "+Number(document.getElementById("BelsoDiv0").dataset.kezdoertek)+"</p>";
+    KiinduloErtekDiv.innerHTML = "<p>Kiinduló összeg: "+kiinduloertek+"</p>";
     BefejezesDivTer.appendChild(KiinduloErtekDiv);
     let MostaniErtekDiv = document.createElement("div");
-    MostaniErtekDiv.innerHTML = "<p>Vég összeg: "+document.getElementById("ChipTablaNev").dataset.value+"</p>";
+    MostaniErtekDiv.innerHTML = "<p>Vég összeg: "+mostaniertek+"</p>";
     MostaniErtekDiv.id = "MostaniErtekDiv";
     BefejezesDivTer.appendChild(MostaniErtekDiv);
-    if(VegOsszeg-Number(document.getElementById("BelsoDiv0").dataset.kezdoertek) < 0){
+    if(VegOsszeg-kiinduloertek < 0){
         let VesztesegDiv = document.createElement("div");
         VesztesegDiv.id = "VesztesegDiv";
-        VesztesegDiv.innerHTML = "<p>Veszteség: "+(VegOsszeg-Number(document.getElementById("BelsoDiv0").dataset.kezdoertek))+"</p>";
+        VesztesegDiv.innerHTML = "<p>Veszteség: "+(VegOsszeg-kiinduloertek)+"</p>";
         BefejezesDivTer.appendChild(VesztesegDiv);
     }
-    else if(VegOsszeg-Number(document.getElementById("BelsoDiv0").dataset.kezdoertek) > 0){
+    else if(VegOsszeg-kiinduloertek > 0){
         let NyeresegDiv = document.createElement("div");
         NyeresegDiv.id = "NyeresegDiv";
-        NyeresegDiv.innerHTML = "<p>Nyereség: "+(VegOsszeg-Number(document.getElementById("BelsoDiv0").dataset.kezdoertek))+"</p>";
+        NyeresegDiv.innerHTML = "<p>Nyereség: "+(VegOsszeg-kiinduloertek)+"</p>";
         BefejezesDivTer.appendChild(NyeresegDiv);
     }
     else{
         let SemlegesDiv = document.createElement("div");
         SemlegesDiv.id = "SemlegesDiv";
-        SemlegesDiv.innerHTML = "<p>Profit -> Az érték semmit se változott!</p>";
+        SemlegesDiv.innerHTML = "<p>Az érték semmit se változott!</p>";
         BefejezesDivTer.appendChild(SemlegesDiv);
     }
     let UjMecsInditasGomb = document.createElement("input");
@@ -606,7 +610,7 @@ function BotIQ(divid,dif){
         }
     }
     else if(dif == "normál"){
-        if(12 > document.getElementById(ertek).dataset.value){
+        if(11 >= document.getElementById(ertek).dataset.value){
             if(document.getElementById(divid[2]).firstChild != undefined){
                 document.getElementById(divid[2]).removeChild(document.getElementById(divid[2]).firstChild);
             }
@@ -614,7 +618,7 @@ function BotIQ(divid,dif){
             KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
             setTimeout(BotIQ,1200,divid,dif);
         }
-        else if(document.getElementById(ertek).dataset.value > 11 && document.getElementById(ertek).dataset.value < 17){
+        else if(document.getElementById(ertek).dataset.value >= 11 && document.getElementById(ertek).dataset.value < 17){
             let random = Math.floor(Math.random()*100+1);
             if(random < 71){
                 if(document.getElementById(divid[2]).firstChild != undefined){
@@ -630,7 +634,7 @@ function BotIQ(divid,dif){
         }
     }
     else if(dif == "nehéz"){
-        if(11 > document.getElementById(ertek).dataset.value){
+        if(11 >= document.getElementById(ertek).dataset.value){
             if(document.getElementById(divid[2]).firstChild != undefined){
                 document.getElementById(divid[2]).removeChild(document.getElementById(divid[2]).firstChild);
             }
@@ -662,7 +666,7 @@ function BotIQ(divid,dif){
             KartyaOsszeg2(JatekosKartyaID[JatekosLepteto]);
             setTimeout(BotIQ,600,divid,dif);
         }
-        else if(document.getElementById(ertek).dataset.value > 11 && document.getElementById(ertek).dataset.value < 15){
+        else if(document.getElementById(ertek).dataset.value >= 11 && document.getElementById(ertek).dataset.value < 15){
             let random = Math.floor(Math.random()*100+1);
             if(random < 21){
                 if(document.getElementById(divid[2]).firstChild != undefined){
