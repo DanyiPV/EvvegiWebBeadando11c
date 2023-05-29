@@ -535,29 +535,29 @@ function Befejezes2(){
     BefejezesDivTer.innerHTML = "<p>Értékelés</p>";
     Jatekter.appendChild(BefejezesDivTer);
     setTimeout(RaadLenyilas1,700);
-    let KorokSzamaDiv = document.createElement("div");
-    KorokSzamaDiv.id = "KorokSzamaDiv";
-    KorokSzamaDiv.innerHTML = "<p>Lejátszott körök száma: "+korszamlalo+"</p>";
-    BefejezesDivTer.appendChild(KorokSzamaDiv);
-    let KiinduloErtekDiv = document.createElement("div");
-    KiinduloErtekDiv.id = "KiinduloErtekDiv";
-    KiinduloErtekDiv.innerHTML = "<p>Kiinduló összeg: "+kiinduloertek+"</p>";
-    BefejezesDivTer.appendChild(KiinduloErtekDiv);
-    let MostaniErtekDiv = document.createElement("div");
-    MostaniErtekDiv.innerHTML = "<p>Vég összeg: "+mostaniertek+"</p>";
-    MostaniErtekDiv.id = "MostaniErtekDiv";
-    BefejezesDivTer.appendChild(MostaniErtekDiv);
+    let KorokSzamaDiv2 = document.createElement("div");
+    KorokSzamaDiv2.id = "KorokSzamaDiv";
+    KorokSzamaDiv2.innerHTML = "<p>Lejátszott körök száma: "+korszamlalo+"</p>";
+    BefejezesDivTer.appendChild(KorokSzamaDiv2);
+    let KiinduloErtekDiv2 = document.createElement("div");
+    KiinduloErtekDiv2.id = "KiinduloErtekDiv";
+    KiinduloErtekDiv2.innerHTML = "<p>Kiinduló összeg: "+kiinduloertek+"</p>";
+    BefejezesDivTer.appendChild(KiinduloErtekDiv2);
+    let MostaniErtekDiv2 = document.createElement("div");
+    MostaniErtekDiv2.innerHTML = "<p>Vég összeg: "+mostaniertek+"</p>";
+    MostaniErtekDiv2.id = "MostaniErtekDiv";
+    BefejezesDivTer.appendChild(MostaniErtekDiv2);
     if(VegOsszeg-kiinduloertek < 0){
-        let VesztesegDiv = document.createElement("div");
-        VesztesegDiv.id = "VesztesegDiv";
-        VesztesegDiv.innerHTML = "<p>Veszteség: "+(VegOsszeg-kiinduloertek)+"</p>";
-        BefejezesDivTer.appendChild(VesztesegDiv);
+        let VesztesegDiv2 = document.createElement("div");
+        VesztesegDiv2.id = "VesztesegDiv";
+        VesztesegDiv2.innerHTML = "<p>Veszteség: "+(VegOsszeg-kiinduloertek)+"</p>";
+        BefejezesDivTer.appendChild(VesztesegDiv2);
     }
     else if(VegOsszeg-kiinduloertek > 0){
-        let NyeresegDiv = document.createElement("div");
-        NyeresegDiv.id = "NyeresegDiv";
-        NyeresegDiv.innerHTML = "<p>Nyereség: "+(VegOsszeg-kiinduloertek)+"</p>";
-        BefejezesDivTer.appendChild(NyeresegDiv);
+        let NyeresegDiv2 = document.createElement("div");
+        NyeresegDiv2.id = "NyeresegDiv";
+        NyeresegDiv2.innerHTML = "<p>Nyereség: "+(VegOsszeg-kiinduloertek)+"</p>";
+        BefejezesDiv2Ter.appendChild(NyeresegDiv2);
     }
     else{
         let SemlegesDiv = document.createElement("div");
