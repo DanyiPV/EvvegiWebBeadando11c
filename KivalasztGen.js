@@ -1,10 +1,12 @@
 //Globál változók
 var Leteve = false;
 var CoinErtek = 0;
+var JatekosCoinErtek = new Array();
 var Lefutott = false;
 var BotokEllen = undefined;
 var TeljesCoinErtek = 0;
 var Jatekos;
+var elinditva = false;
 
 //Játéktér
 let Jatekter = document.createElement("div");
@@ -74,6 +76,11 @@ function ErtekKivalasztas(){ //A kezdő érték kiválasztó Div tér és a bele
 function ErtekKivalasztva(div){ // Amelyik érték divre kattintanak azt választja ki és a gomb létrehozása után fog lefutni, és ha az elsőnek kattintanak egy értékre, akkor a gombra ráteszi amit kell
     div.classList += " Kivalasztva";
     CoinErtek = div.dataset.ertek;
+    if(!BotokEllen){
+        for(let i = 0;i<5;i++){
+            JatekosCoinErtek[i] = CoinErtek;
+        }
+    }
     TeljesCoinErtek = div.dataset.ertek;
     for(let i = 0; i < document.getElementsByClassName("BelsoDivek").length;i++){
         if("BDiv"+i != div.id){
@@ -161,34 +168,60 @@ function ErtekBedobas(){ //Kigenerálja a chipekket és a egy szöveget középr
 function ErtekMegjelenites(){ //A bal alsó chippek kigenerálása, és azok elszürkítése ha a kezdő érték kisebb mint a chip értéke
     let Tabla = document.getElementById("ChipTabla");
     let TablaNev = document.getElementById("ChipTablaNev");
-    if(TablaNev.dataset.value != undefined){
-        CoinErtek = Number(TablaNev.dataset.value);
-    }
-    TablaNev.innerHTML = "<p>$"+CoinErtek+"</p>";
     let ZsetonDiv1 = document.createElement("div");
     let ZsetonDiv2 = document.createElement("div");
     ZsetonDiv1.id = "ZsetonDiv1";
     ZsetonDiv2.id = "ZsetonDiv2";
     let chipek = [1,5,25,50,100,500,1000];
-    for(let i = 0;i<7;i++){
-        let CoinDiv = document.createElement("div");
-        CoinDiv.classList = "CoinDiv";
-        let img = document.createElement("img");
-        img.src = "chips/chip"+chipek[i]+".png";
-        if(chipek[i]<=CoinErtek){
-            img.classList = "Chipkepaktiv";
-            img.setAttribute("onclick","ErtekKatt("+chipek[i]+")")
-        }else{
-            img.classList = "Chipkepinaktiv";
+    if(!BotokEllen){
+        if(JatekosCoinErtek[Jatekos-1]==0){
+            KovetkezoTetMegadas(false);
         }
-        CoinDiv.appendChild(img);
-        if(i>3){
-            ZsetonDiv2.appendChild(CoinDiv);
-        }else{
-            ZsetonDiv1.appendChild(CoinDiv);
+        TablaNev.innerHTML = "<p>$"+JatekosCoinErtek[Jatekos-1]+"</p>";
+        for(let i = 0;i<7;i++){
+            let CoinDiv = document.createElement("div");
+            CoinDiv.classList = "CoinDiv";
+            let img = document.createElement("img");
+            img.src = "chips/chip"+chipek[i]+".png";
+            if(chipek[i]<=JatekosCoinErtek[Jatekos-1]){
+                img.classList = "Chipkepaktiv";
+                img.setAttribute("onclick","ErtekKatt("+chipek[i]+")")
+            }else{
+                img.classList = "Chipkepinaktiv";
+            }
+            CoinDiv.appendChild(img);
+            if(i>3){
+                ZsetonDiv2.appendChild(CoinDiv);
+            }else{
+                ZsetonDiv1.appendChild(CoinDiv);
+            }
         }
+        document.getElementById("ChipTablaNev").dataset.value = JatekosCoinErtek[Jatekos-1];
+    }else{
+        if(TablaNev.dataset.value != undefined){
+            CoinErtek = Number(TablaNev.dataset.value);
+        }
+        TablaNev.innerHTML = "<p>$"+CoinErtek+"</p>";
+        for(let i = 0;i<7;i++){
+            let CoinDiv = document.createElement("div");
+            CoinDiv.classList = "CoinDiv";
+            let img = document.createElement("img");
+            img.src = "chips/chip"+chipek[i]+".png";
+            if(chipek[i]<=CoinErtek){
+                img.classList = "Chipkepaktiv";
+                img.setAttribute("onclick","ErtekKatt("+chipek[i]+")")
+            }else{
+                img.classList = "Chipkepinaktiv";
+            }
+            CoinDiv.appendChild(img);
+            if(i>3){
+                ZsetonDiv2.appendChild(CoinDiv);
+            }else{
+                ZsetonDiv1.appendChild(CoinDiv);
+            }
+        }
+        document.getElementById("ChipTablaNev").dataset.value = CoinErtek;
     }
-    document.getElementById("ChipTablaNev").dataset.value = CoinErtek;
     Tabla.appendChild(ZsetonDiv1);
     Tabla.appendChild(ZsetonDiv2);
     
@@ -204,13 +237,15 @@ function ErtekKatt(ertek){ //Amelyik chipre kattintott, annak az értékét att�
         let div = document.getElementById("CoinErtek51");
         div.dataset.value = Number(div.dataset.value)+ertek;
         div.innerHTML = "<p>$"+div.dataset.value+"</p>";
+        CoinErtek -= ertek;
+        document.getElementById("ChipTablaNev").dataset.value = CoinErtek;
     }else{
         let div = document.getElementById(CoinertekDivek[Jatekos-1]);
         div.dataset.value = Number(div.dataset.value)+ertek;
         div.innerHTML = "<p>$"+div.dataset.value+"</p>";
+        JatekosCoinErtek[Jatekos-1] -= ertek;
+        document.getElementById("ChipTablaNev").dataset.value = JatekosCoinErtek[Jatekos-1];
     }
-    CoinErtek -= ertek;
-    document.getElementById("ChipTablaNev").dataset.value = CoinErtek;
     ErtekFrissites();
     InditoGombKiGen();
 }
@@ -252,12 +287,12 @@ function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a di
         }
     }
     else{
-        if(CoinErtek==0 && document.getElementById("KovGomb") != undefined){
+        if(Jatekos == 5 && document.getElementById("KovGomb") != undefined){
             document.getElementById("KovGomb").classList = "KovGombEltuntet";
             document.getElementById("KovGomb").removeAttribute("onclick","KovetkezoTetMegadas()");
             Jatekter.removeChild(document.getElementById("KovGomb"));
         }
-        if(Number(document.getElementById("CoinErtek11").dataset.value)!=0 && document.getElementById("InditoGomb") == undefined){
+        if(Ossztet()!=0 && document.getElementById("InditoGomb") == undefined && !elinditva){
             let InditoGomb = document.createElement("input");
             InditoGomb.value = "Indítás";
             InditoGomb.type = "button";
@@ -266,7 +301,7 @@ function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a di
             InditoGomb.setAttribute("onclick","general()");
             Jatekter.appendChild(InditoGomb);
         }
-        if(Number(document.getElementById(CoinertekDivek[Jatekos-1]).dataset.value)!=0 && document.getElementById("KovGomb") == undefined && CoinErtek>0){
+        if(Jatekos!=5 && document.getElementById("KovGomb") == undefined && document.getElementById(CoinertekDivek[Jatekos-1]) != null && Number(document.getElementById(CoinertekDivek[Jatekos-1]).dataset.value) != 0){
             let KovGomb = document.createElement("input");
             KovGomb.value = "Következő";
             KovGomb.type = "button";
@@ -278,14 +313,30 @@ function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a di
     }
 }
 
+function Ossztet(){
+    let ans = 0;
+    for(let i = 0;i<CoinertekDivek.length;i++){
+        ans += Number(document.getElementById(CoinertekDivek[i]).dataset.value);
+    }
+    return ans;
+}
+
 function KovetkezoTetMegadas(){
     Jatekos++;
+    ErtekFrissites();
     StatuszIndikatorNullazas();
-    document.getElementById("KovGomb").classList = "KovGombEltuntet";
-    document.getElementById("KovGomb").removeAttribute("onclick","KovetkezoTetMegadas()");
-    Jatekter.removeChild(document.getElementById("KovGomb"));
-    if(CoinErtek!=0){
-        document.getElementById(ErtekDivArray[Jatekos-1]).firstChild.classList.add("StatusIndikatorBalAktiv");
+    if(document.getElementById("KovGomb") != undefined){
+        document.getElementById("KovGomb").classList = "KovGombEltuntet";
+        document.getElementById("KovGomb").removeAttribute("onclick","KovetkezoTetMegadas()");
+        Jatekter.removeChild(document.getElementById("KovGomb"));
+    }
+    if(Jatekos < 6){
+        if(JatekosCoinErtek[Jatekos-1]!=0){
+            document.getElementById(ErtekDivArray[Jatekos-1]).firstChild.classList.add("StatusIndikatorBalAktiv");
+        }
+    }
+    else{
+        general();
     }
 }
 
