@@ -268,8 +268,13 @@ function JatekKezdes(){
         GombGen = true;
     }
     StatuszIndikatorNullazas();
-    document.getElementById("ChipTablaNev").innerHTML = "<p>$"+JatekosCoinErtek[plr]+"</p>";
+    while(document.getElementById(CoinertekDivek[plr]) != null && Number(document.getElementById(CoinertekDivek[plr]).dataset.value == 0)){
+        plr++;
+    }
     if(plr<5){
+        if(!jatekVege){
+            document.getElementById("ChipTablaNev").innerHTML = "<p>$"+JatekosCoinErtek[plr]+"</p>";
+        }
         if(Number(document.getElementById(JatekosLapErtekek[plr]).dataset.value) == 21){
             document.getElementById(JatekosLapErtekek[plr]).classList.add("OsszEredmenyNyert");
             Tovabb();
@@ -322,26 +327,34 @@ function KartyaHuzas(divSzam,KartyaID){
 }
 
 function Tovabb(){
-    if(Number(document.getElementById(JatekosLapErtekek[plr]).dataset.value)<21){
+    if(document.getElementById(JatekosLapErtekek[plr]) != null && Number(document.getElementById(JatekosLapErtekek[plr]).dataset.value)<21){
         document.getElementById(JatekosLapErtekek[plr]).classList.add("OsszEredmenyFeher");
     }
     if(plr!=4){
-        if(Number(document.getElementById(CoinertekDivek[plr+1]).dataset.value != 0)){
+        if(VanMegErtek()){
             plr++;
+            while(document.getElementById(CoinertekDivek[plr]) != null && Number(document.getElementById(CoinertekDivek[plr]).dataset.value) == 0){
+                plr++;
+            }
             document.getElementById("ChipTablaNev").innerHTML = "<p>$"+JatekosCoinErtek[plr]+"</p>";
             JatekKezdes();
         }
-        else if(Number(document.getElementById(CoinertekDivek[CoinertekDivek.length-1]).dataset.value != 0)){
-            plr++;
-            document.getElementById("ChipTablaNev").innerHTML = "<p>$"+JatekosCoinErtek[plr]+"</p>";
-            JatekKezdes();
-        }else{
+        else{
             JatekVege();
         }
     
     }else{
         JatekVege();
     }
+}
+
+function VanMegErtek(){
+    for(let i = plr; i<5;i++){
+        if(Number(document.getElementById(CoinertekDivek[i]).dataset.value) != 0){
+            return true;
+        }
+    }
+    return false;
 }
 
 function JatekVege(){
@@ -398,9 +411,9 @@ function OsztoKartyaHuzas(){
 }
 
 function Leszamolas(){
-    let osztoErtek = Number(document.getElementById("OsztoDivErtek").firstChild.innerHTML)
     for (let i = 0; i < 5; i++) {
-        let lapErtek = Number(document.getElementById("OLBDivErtek"+(i+1)+"0").firstChild.innerHTML);
+        let osztoErtek = Number(document.getElementById("OsztoDivErtek").firstChild.innerHTML);
+        let lapErtek = Number(document.getElementById(JatekosLapErtekek[i]).firstChild.innerHTML);
         let coinErtek = Number(document.getElementById(CoinertekDivek[i]).dataset.value);
         if(lapErtek>osztoErtek && lapErtek<=21 && coinErtek!=0){//ha 21 alatt vagy es osztonal tobb
             JatekosCoinErtek[i] += coinErtek*2;
@@ -469,7 +482,6 @@ function UjkorGombok(){
 
 function UjkorKezdes(){
     Jatekos = 1;
-    KorSzamlalo++;
     setTimeout(Reset,700,true);
     document.getElementById("FeketeHatterDiv").classList.remove("FeketeHatterMegjelenito");
     document.getElementById("FeketeHatterDiv").classList.add("FeketeHatterEltunteto");

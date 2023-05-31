@@ -175,9 +175,11 @@ function ErtekMegjelenites(){ //A bal alsó chippek kigenerálása, és azok els
     let chipek = [1,5,25,50,100,500,1000];
     if(!BotokEllen){
         if(JatekosCoinErtek[Jatekos-1]==0){
-            KovetkezoTetMegadas(false);
+            KovetkezoTetMegadas();
         }
-        TablaNev.innerHTML = "<p>$"+JatekosCoinErtek[Jatekos-1]+"</p>";
+        if(JatekosCoinErtek[Jatekos-1] != undefined){
+            TablaNev.innerHTML = "<p>$"+JatekosCoinErtek[Jatekos-1]+"</p>";
+        }
         for(let i = 0;i<7;i++){
             let CoinDiv = document.createElement("div");
             CoinDiv.classList = "CoinDiv";
@@ -301,7 +303,7 @@ function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a di
             InditoGomb.setAttribute("onclick","general()");
             Jatekter.appendChild(InditoGomb);
         }
-        if(Jatekos!=5 && document.getElementById("KovGomb") == undefined && document.getElementById(CoinertekDivek[Jatekos-1]) != null && Number(document.getElementById(CoinertekDivek[Jatekos-1]).dataset.value) != 0){
+        if(Jatekos!=5 && document.getElementById("KovGomb") == undefined && document.getElementById(CoinertekDivek[Jatekos-1]) != null && Number(document.getElementById(CoinertekDivek[Jatekos-1]).dataset.value) != 0 && VanMegTetmegado()){
             let KovGomb = document.createElement("input");
             KovGomb.value = "Következő";
             KovGomb.type = "button";
@@ -311,6 +313,15 @@ function InditoGombKiGen(){ //Amint az első chip értéket bedobja, vagyis a di
             Jatekter.appendChild(KovGomb);
         }
     }
+}
+
+function VanMegTetmegado(){
+    for(let i = Jatekos;i<5;i++){
+        if(JatekosCoinErtek[i] != 0){
+            return true;
+        }
+    }
+    return false;
 }
 
 function Ossztet(){
