@@ -528,10 +528,16 @@ function Befejezes2(){
     let korszamlalo = Number(document.getElementById("BelsoDiv0").dataset.korszamlalo);
     let kiinduloertek = Number(document.getElementById("BelsoDiv0").dataset.kezdoertek);
     let mostaniertek = Number(document.getElementById("ChipTablaNev").dataset.value);
-    console.log(korszamlalo,kiinduloertek,mostaniertek);
-    let BefejezesDivTer = document.createElement("div");
-    BefejezesDivTer.id = "BefejezesDivTer";
-    BefejezesDivTer.classList = "AlapDiv";
+    if(document.getElementById("BefejezesDivTer") != undefined){
+        let BefejezesDivTer = document.getElementById("BefejezesDivTer");
+        BefejezesDivTer.innerHTML =  "";
+    }
+    else{
+        let BefejezesDivTer = document.createElement("div");
+        BefejezesDivTer.id = "BefejezesDivTer";
+        BefejezesDivTer.classList = "AlapDiv";
+        Jatekter.appendChild(BefejezesDivTer);
+    }
     BefejezesDivTer.innerHTML = "<p>Értékelés</p>";
     Jatekter.appendChild(BefejezesDivTer);
     setTimeout(RaadLenyilas1,700);
